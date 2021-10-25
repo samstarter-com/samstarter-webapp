@@ -1,0 +1,92 @@
+﻿<script type="text/html" id="UserDetail">
+    <tr data-bind="click: onDetailRowClick, css: { info: isSelected() == true }">
+
+        <td>
+            <div class="dropdown">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
+                    <li role="presentation">
+                        <a role="menuitem" tabindex="2" data-bind="attr: { href: url() }" id="detailsLink">Details</a>
+                    </li>
+                    <li role="presentation" data-bind='click: menu().onChangeRoleLinkClick, enable: menu().onChangeRoleLinkClickEnabled'>
+                        <a role="menuitem" tabindex="2" href="/Administration/Users/ChangeRole" id="changeRoleLink">Edit users roles</a>
+                    </li>
+                    <li role="presentation" data-bind='click: menu().onUpdateLinkClick, enable: menu().onUpdateLinkClickEnabled'>
+                        <a role="menuitem" tabindex="2" href="/Administration/Users/Update" id="updateLink">Edit</a>
+                    </li>
+                    <li role="presentation" data-bind='click: menu().onDeleteLinkClick, enable: menu().onDeleteLinkClickEnabled'>
+                        <a role="menuitem" tabindex="2" href="/Administration/Users/Delete" id="deleteLink">Delete</a>
+                    </li>
+                    <li role="presentation" data-bind='click: menu().onUnLockLinkClick, enable: menu().onUnLockLinkClickEnabled'>
+                        <a role="menuitem" tabindex="2" href="/Administration/Users/UnLock" id="unLockLink">Unlock</a>
+                    </li>
+                </ul>
+            </div>
+        </td>
+
+        <td data-bind="text: userName"></td>
+        <td data-bind="text: firstName"></td>
+        <td data-bind="text: lastName"></td>
+        <td data-bind="text: email"></td>
+        <td data-bind="text: structureUnitName"></td>
+        <td>
+            <div data-bind="if: isApproved">
+                <span class="glyphicon glyphicon-ok"></span>
+            </div>
+        </td>
+        <td>
+            <div data-bind="if: isLocked">
+                <span class="glyphicon glyphicon-ok"></span>
+            </div>
+        </td>
+    </tr>
+</script>
+
+@await Html.PartialAsync("~/Views/Shared/_PagingPanelTemplate.cshtml")
+
+<div id="userList">
+    <div class="dropdown" id="userMenu">
+        <button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+            Actions
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+
+            <li role="presentation" data-bind='click: onAddLinkClick, enable: onAddLinkClickEnabled'>
+                <a role="menuitem" tabindex="1" href="/administration/users/add" id="addLink">Add</a>
+            </li>
+
+        </ul>
+    </div>
+
+    <div id="list">
+        <table class="table table-striped table-hover" id="users_table">
+            <thead>
+                <tr>
+
+                    <th></th>
+
+                    <th id="thUserName">User name</th>
+                    <th id="thFirstName">First name</th>
+                    <th id="thLastName">Last name</th>
+                    <th id="thEmail">Email</th>
+                    <th id="thStructureUnitName">Structure unit</th>
+                    <th id="thIsApproved">Approved</th>
+                    <th id="thIsLocked">Locked</th>
+                </tr>
+            </thead>
+            <tbody data-bind="template: {
+        name: 'UserDetail',
+        foreach: items
+    }"></tbody>
+        </table>
+
+        <div data-bind="template: {
+        name: 'PagingPanel',
+        data: paging
+    }"></div>
+    </div>
+</div>

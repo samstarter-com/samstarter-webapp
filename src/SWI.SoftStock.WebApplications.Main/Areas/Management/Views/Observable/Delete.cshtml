@@ -1,0 +1,22 @@
+﻿<hgroup class="title">
+    <h1>Delete observable</h1>
+</hgroup>
+<div id="delete">
+    <form data-bind="submit: deleteObservable">
+    <div class="validation-summary-errors">
+        <ul data-bind="foreach: errors">
+            <li>
+                <span data-bind="text: $data"> </span>
+            </li>
+        </ul>
+    </div>
+        <fieldset>
+            <div  style="margin: 15px 0 15px 15px;" >
+                <span>Delete observable for process </span><span class="itemname" data-bind='text: processName'></span> <span>and software </span><span class="itemname" data-bind='text: softwareName'></span><span>?</span>
+            </div>
+            <div>
+                <input type="submit" value="Delete" />
+            </div>
+        </fieldset>
+    </form>
+</div>

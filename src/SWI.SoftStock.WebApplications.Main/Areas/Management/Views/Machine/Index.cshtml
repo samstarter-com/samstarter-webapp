@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "Machine";
+    Layout = "../Shared/ManagementLayout.cshtml";
+}
+
+<link rel="stylesheet" href="/ui/jstree/themes/style.min.css" />
+<script src="/ui/jstree/jstree.min.js"></script>
+
+<script src="/app/js/machinelogic.js"></script>
+
+<div class="col-md-2 filterpanel">
+    <div id="compFilter">
+        <div class="radio">
+            <label>
+                <input type="checkbox" id="includeSubItemsId" data-bind="checked: includeSubItems, click: onIncludeSubItemsClick">Include subunits
+            </label>
+        </div>
+        <div id="jstree_demo_div" data-bind="jstree: { data: data, onTreeChange: onTreeChange }"></div>
+    </div>
+</div>
+<div class="col-md-10">
+    <div id="machineContent">
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(function () {
+
+        $(document).ready(function () {
+            const listTemplate = `/${MANAGEMENT_MACHINES_PAGE}/List`;
+            const detailTemplate = `/${MANAGEMENT_MACHINES_PAGE}/Details`;
+            const urlParams = new URLSearchParams(window.location.search);
+
+            const id = urlParams.get('id') || '';
+
+            const contentElement = document.getElementById("machineContent");
+            const filterElement = document.getElementById("compFilter");
+            const defaultDataVmCnstr = () => new MachinesListViewModel(listTemplate);
+            const pagevm = new MachinePageViewModel(defaultDataVmCnstr, contentElement, filterElement);
+            const datavm = id !== "" ? new MachineViewModel(id, detailTemplate, pagevm.menu) : new MachinesListViewModel(listTemplate, pagevm.menu);
+            pagevm.setDataVM(datavm);
+
+            datavm.init({
+                id: urlParams.get('id') || '',
+                structureUnitId: urlParams.get('cid') || '',
+                includeSubItems: urlParams.get('includeSubItems') || 0,
+                machineType: urlParams.get('machineType') || 1
+            });
+
+            pagevm.afterReload = function () {
+                pagevm.menu.selectedItem(pagevm.dataVM._name === 'details' ? pagevm.dataVM : null);
+                $('#isEnabled').trigger('change');
+            };
+
+            pagevm.reload();
+        });
+    });
+</script>

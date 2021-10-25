@@ -1,0 +1,24 @@
+﻿@model dynamic
+
+<div id="managementMenu">
+    <ul class="nav nav-tabs">
+        <li class="@((string)ViewContext.RouteData.Values["Controller"] == "Machine"  ? "active" : "")">@Html.ActionLink("Machine", "Index", "Machine", new { Area = "Management" }, new { })</li>
+        <li class="@((string)ViewContext.RouteData.Values["Controller"] == "Software" ? "active" : "")">@Html.ActionLink("Software", "Index", "Software", new { Area = "Management" }, new { })</li>
+        <li class="@((string)ViewContext.RouteData.Values["Controller"] == "License"  ? "active" : "")">@Html.ActionLink("License", "Index", "License", new { Area = "Management" }, new { })</li>
+        <li class="@((string)ViewContext.RouteData.Values["Controller"] == "LicenseRequest" ? "active" : "")">
+            @Html.ActionLink("License request", "Index", "LicenseRequest", new { Area = "Management" }, new { })
+            <span id="header-licenseRequest-count" class="gem " aria-hidden="true" data-bind='text: licenseRequestCount'></span>
+        </li>
+        <li class="@((string)ViewContext.RouteData.Values["Controller"] == "Observable" ? "active" : "")">@Html.ActionLink("Observable processes", "Index", "Observable", new { Area = "Management" }, new { })</li>
+    </ul>
+</div>
+
+<script type="text/javascript">
+        $(function () {
+            $(document).ready(function () {
+                var managementPagevm = new ManagementPageViewModel();
+                managementPagevm.getNewLicenseRequestCount();
+                ko.applyBindings(managementPagevm, document.getElementById("managementMenu"));
+            });
+        });
+    </script>

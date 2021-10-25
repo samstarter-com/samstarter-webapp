@@ -1,0 +1,79 @@
+﻿<hgroup class="title">
+    <h1>Answer to license request</h1>
+</hgroup>
+
+<script type="text/html" id="AddDocument">
+    <div class="col-md-12 nopadding">
+        <button type="button" class="btn btn-default btn-lg input-group-lg" data-bind="click: onRemoveDocumentClick" title="Remove document">
+            <span class="glyphicon glyphicon-remove-sign"></span>
+        </button>
+        <span data-bind="text: name"></span>
+    </div>
+
+    <div class="col-md-12 nopadding">
+        <hr class="horizontalDivider" />
+    </div>
+</script>
+
+<div id="licenseRequest">
+
+    <div class="col-md-12">
+        <form data-bind="submit: answer">
+            <div class="validation-summary-errors">
+                <ul data-bind="foreach: errors">
+                    <li>
+                        <span data-bind="text: $data"> </span>
+                    </li>
+                </ul>
+            </div>
+
+            <fieldset>
+                <input type="hidden" id="LicenseRequestId" name="LicenseRequestId" data-bind='value: licenseRequestId' />
+                <ol>
+                    <li>
+                        <label for="MachineName">Machine</label>
+                        <span type="text" id="MachineName" data-bind='text: machineName' />
+                        <input type="hidden" id="MachineId" name="MachineId" data-bind='value: machineId' />
+                    </li>
+                    <li>
+                        <label for="UserName">User</label>
+                        <span type="text" id="UserName" data-bind='text: userName' />
+                        <input type="hidden" id="UserId" name="UserId" data-bind='value: userId' />
+                    </li>
+                    <li>
+                        <label for="UserEmail">User email</label>
+                        <span type="text" id="UserEmail" data-bind='text: userEmail' />
+                        <input type="hidden" id="UserEmail" name="UserEmail" data-bind='value: userEmail' />
+                    </li>
+                    <li>
+                        <label for="SoftwareName">Software</label>
+                        <span type="text" id="SoftwareName" data-bind='text: softwareName' />
+                        <input type="hidden" id="SoftwareId" name="SoftwareId" data-bind='value: softwareId' />
+                    </li>
+                    <li>
+                        <label for="SoftwarePublisher">Publisher</label>
+                        <span type="text" id="SoftwarePublisher" data-bind='text: softwarePublisher' />
+                    </li>
+                    <li>
+                        <label for="Text">Request text</label>
+                        <span type="text" id="Text" data-bind='text: text' />
+                    </li>
+                    <li>
+                        <label for="AnswerText">Answer text</label>
+                        <textarea cols="20" data-bind="value: answerText" data-val="true"
+                                  data-val-maxlength="Answer cannot be longer than 1000 characters"
+                                  data-val-maxlength-max="1000" id="AnswerText" name="AnswerText" rows="2"></textarea>
+                    </li>
+                    <li>
+                        <div class="col-md-12 nopadding">
+                            <label for="fileHolder">Documents</label>
+                        </div>
+                        <div class="col-md-12 nopadding" id="fileHolder" data-bind="template: { name: 'AddDocument', foreach: documents }" />
+                        <input type="file" data-bind="event: { change: function() { uploadDocument($element.files[0]) } }" class="form-control" />                      
+                    </li>
+                </ol>
+                <input type="submit" id="Answer" name="Answer" value="Answer" />
+            </fieldset>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,93 @@
+﻿<script type="text/html" id="Documents">
+    <tr>
+        <td>
+            <a data-bind="text: name, click: onDownloadClick, attr: { href: downloadUrl, title: name }"></a>
+        </td>
+        <td data-bind="text: hcLocation"></td>
+    </tr>
+</script>
+<div id="details">
+    <div class="dropdown">
+        <button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+            Actions
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <li role="presentation" data-bind='click: menu().onUpdateLinkClick, enable: menu().onUpdateLinkClickEnabled'>
+                    <a role="menuitem" tabindex="2" href="/management/licenserequests/Update" id="updateLink">Edit</a>
+                </li>
+                <li role="presentation" data-bind='click: menu().onSendLinkClick, enable: menu().onSendLinkClickEnabled'>
+                    <a role="menuitem" tabindex="2" href="/management/licenserequests/Send" id="sendLink">Send</a>
+                </li>
+                <li role="presentation" data-bind='click: menu().onCreateLicenseLinkClick, enable: menu().onCreateLicenseLinkClickEnabled'>
+                    <a role="menuitem" tabindex="2" href="/management/licenserequests/CreateLicense" id="createLicenseLink">Create license</a>
+                </li>
+                <li role="presentation" data-bind='click: menu().onArchiveLinkClick, enable: menu().onArchiveLinkClickEnabled'>
+                    <a role="menuitem" tabindex="2" href="/management/licenserequests/Archive" id="archiveLink">Archive</a>
+                </li>
+        </ul>
+    </div>
+
+
+    <ul>
+        <li>
+            <label for="Status">Status</label>
+            <span type="text" id="Status" data-bind='text: status' readonly="readonly" />
+        </li>
+        <li>
+            <label for="MachineName">Machine</label>
+            <span type="text" id="MachineName" data-bind='text: machineName' readonly="readonly" />
+        </li>
+        <li>
+            <label for="UserName">User</label>
+            <span type="text" id="UserName" data-bind='text: userName' readonly="readonly" />
+        </li>
+        <li>
+            <label for="UserEmail">User email</label>
+            <span type="text" id="UserEmail" data-bind='text: userEmail' readonly="readonly" />
+                      
+        </li>
+        <li>
+            <label for="SoftwareName">Software</label>
+            <span type="text" id="SoftwareName" data-bind='text: softwareName' readonly="readonly" />
+        </li>
+        <li>
+            <label for="SoftwarePublisher">Software publisher</label>
+            <span type="text" id="SoftwarePublisher" data-bind='text: softwarePublisher' readonly="readonly" />
+        </li>
+        <li>
+            <label for="Text">Request text</label>
+            <span type="text" id="Text" data-bind='text: text' readonly="readonly" />
+        </li>
+        <li>
+            <label for="CreatedOn">Created on</label>
+            <span type="text" id="CreatedOn" data-bind='text: createdOn' readonly="readonly" />
+        </li>
+        <li>
+            <label for="ModifiedOn">Modified on</label>
+            <span type="text" id="ModifiedOn" data-bind='text: modifiedOn' readonly="readonly" />
+        </li>
+        <li>
+            <label for="UserAnswer">User answer</label>
+            <span type="text" id="UserAnswer" data-bind='text: userAnswerText' readonly="readonly" />
+        </li>
+        <li>
+            <label for="licenserequest_documents_table">Documents</label>
+            <table class="table table-striped table-bordered" id="licenserequest_documents_table">
+                <thead>
+                <tr>
+                    <th>Document</th>
+                    <th>Hard copy location</th>
+                </tr>
+                </thead>
+                <tbody data-bind="template: {
+    name: 'Documents',
+    foreach: documents
+}">
+                </tbody>
+            </table>
+        </li>
+    </ul>
+
+</div>
+

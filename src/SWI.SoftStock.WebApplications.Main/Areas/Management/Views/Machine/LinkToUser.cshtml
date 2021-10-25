@@ -1,0 +1,59 @@
+﻿<script type="text/html" id="UserDetail">
+    <tr data-bind="click: onDetailRowClick, css: { info: isSelected() == true }">
+        <td data-bind="text: userName"></td>
+        <td data-bind="text: firstName"></td>
+        <td data-bind="text: lastName"></td>
+    </tr>
+</script>
+
+@await Html.PartialAsync("~/Views/Shared/_PagingPanelTemplate.cshtml")
+
+<hgroup class="title">
+    <h1>Link machine to user</h1>
+</hgroup>
+
+
+<div class="col-md-12">
+
+    <fieldset>
+        <div class="col-md-4" id="machine_u">
+            <div id="jstree_demo_div" data-bind="jstree: { data: data, onTreeChange: onTreeChange }"></div>
+        </div>
+        <div class="col-md-8" id="userContent">
+            <table class="table table-striped table-hover" id="users_table">
+                <thead>
+                    <tr>
+                        <th>User name</th>
+                        <th>First name</th>
+                        <th>Last name</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="template: {
+    name: 'UserDetail',
+    foreach: items
+}"></tbody>
+            </table>
+
+            <div data-bind="template: {
+    name: 'PagingPanel',
+    data: paging
+}"></div>
+        </div>
+    </fieldset>
+    <div id="linkUser">
+        <form data-bind="submit: linkUser">
+            <div class="validation-summary-errors">
+                <ul data-bind="foreach: errors">
+                    <li>
+                        <span data-bind="text: $data"> </span>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-12">
+                <input type="submit" value="Change" />
+            </div>
+        </form>
+
+
+    </div>
+</div>

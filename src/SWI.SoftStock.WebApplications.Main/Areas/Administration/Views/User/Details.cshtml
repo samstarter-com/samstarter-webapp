@@ -1,0 +1,76 @@
+﻿<script type="text/html" id="UserRoles">   
+    <tr>
+        <td data-bind="text: roleName"></td>
+        <td><a data-bind="text: structureUnitName, attr: { href: url, title: structureUnitName }"/></td>      
+    </tr>
+</script>
+
+<div id="userDetails">
+    <div class="dropdown" id="userMenu">
+        <button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+            Actions
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <li role="presentation" data-bind='click: onChangeRoleLinkClick'><a role="menuitem" tabindex="2" href="/administration/users/changeRole" id="changeRoleLink">Edit users roles</a></li>
+                <li role="presentation" data-bind='click: onUpdateLinkClick'><a role="menuitem" tabindex="2" href="/administration/users/update" id="updateLink">Edit</a></li>
+                <li role="presentation" data-bind='click: onDeleteLinkClick'><a role="menuitem" tabindex="2" href="/administration/users/delete" id="deleteLink">Delete</a></li>
+                <li role="presentation" data-bind='click: onUnLockLinkClick, enable: onUnLockLinkClickEnabled'><a role="menuitem" tabindex="2" href="/administration/users/unLock" id="unLockLink">Unlock</a></li>
+            
+        </ul>
+    </div>
+
+    <div id="details">
+        <ul>
+            <li><label for="structureUnitName">Users structure unit</label>
+             <a id="structureUnitName" data-bind='text: structureUnitName, attr: { href: structureUnitUrl, title: structureUnitName }'></a>
+            </li>
+            <li><label for="username">User name</label>
+                <span type="text" id="username" data-bind='text: userName' readonly="readonly" />
+            </li>
+            <li><label for="firstname">First name</label>
+                <span type="text" id="firstname" data-bind='text: firstName' readonly="readonly" />
+            </li>
+            <li><label for="lastname">Last name</label>
+                <span type="text" id="lastname" data-bind='text: lastName' readonly="readonly" />
+            </li>
+
+            <li><label for="email">Email</label>
+                <span type="text" id="email" data-bind='text: email' readonly="readonly" />
+            </li>
+
+            <li><label for="isApproved">Is approved</label>
+                <input id="isApproved" type="checkbox" disabled="disabled" data-bind='checked: isApproved'>
+            </li>
+            
+              <li><label for="isLocked">Is locked</label>
+                <input id="isLocked" type="checkbox" disabled="disabled" data-bind='checked: isLocked'>
+            </li>
+
+            <li><label for="createDate">Create date</label>
+                <span type="text" id="createDate" data-bind='text: createDate' readonly="readonly" />
+            </li>
+
+            <li><label for="lastActivityDate">Last activity date</label>
+                <span type="text" id="lastActivityDate" data-bind='text: lastActivityDate' readonly="readonly" />
+            </li>
+
+        </ul>
+  
+        <table class="table table-striped table-bordered" id="user_roles_table" data-bind="visible: userRoles().length > 0">
+            <thead>
+                <tr>
+                    <th>Role</th>
+                    <th>Structure unit</th>
+                </tr>
+            </thead>
+            <tbody data-bind="template: {
+        name: 'UserRoles',
+        foreach: userRoles
+    }">
+            </tbody>
+        </table>
+
+    </div>
+</div>
+

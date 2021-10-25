@@ -1,0 +1,19 @@
+﻿<hgroup class="title">
+    <h1>Remove license</h1>
+</hgroup>
+<div id="unLink">
+    @using (Html.BeginForm((string)ViewBag.FormAction))
+    {
+        @Html.ValidationSummary()
+        <fieldset>
+            <input type="hidden" id="machineId" name="machineId" />
+            <input type="hidden" id="softwareId" name="softwareId" />
+            <div  style="margin: 15px 0 15px 15px;" >
+                <span>Remove license from installation?</span>
+            </div>
+            <div>
+                <input type="submit" value="Remove" />
+            </div>
+        </fieldset>
+    }
+</div>

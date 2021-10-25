@@ -1,0 +1,16 @@
+﻿<hgroup class="title">
+    <h1>Send license request to user</h1>
+</hgroup>
+<div id="send">
+    <form data-bind="submit: sendlicenseRequest">
+        @Html.ValidationSummary()
+        <fieldset>
+            <div style="margin: 15px 0 15px 15px;">
+                <span>Send license request to </span><span data-bind='text: userName'></span><span>?</span>
+            </div>
+            <div>
+                <input type="submit" value="Send" />
+            </div>
+        </fieldset>
+    </form>
+</div>

@@ -1,0 +1,24 @@
+﻿<hgroup class="title">
+    <h1>Link machine to structure unit</h1>
+</hgroup>
+<div id="linkStructureUnit">
+    <form data-bind="submit: linkStructureUnit">
+        <div class="validation-summary-errors">
+            <ul data-bind="foreach: errors">
+                <li>
+                    <span data-bind="text: $data"> </span>
+                </li>
+            </ul>
+        </div>
+        <fieldset>
+            <ol>
+                <li>
+                    <label for="machine_su">Structure unit</label>
+                    <div id="machine_su" data-bind="jstree: { data: structureUnits, onTreeChange: structureUnitChanging }"></div>
+                </li>
+            </ol>
+            <input type="submit" value="Change" />
+        </fieldset>
+    </form>
+</div>
+

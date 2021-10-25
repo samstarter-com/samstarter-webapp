@@ -1,0 +1,78 @@
+﻿<script type="text/html" id="UsersRoles">
+    <tr data-bind="click: onDetailRowClick, css: { info: isSelected() == true }">
+        <td class="col-md-2">
+            <div class="dropdown">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
+                    <li role="presentation" data-bind='click: menu().onRemoveRoleClick, enable: menu().onRemoveRoleClickEnabled'>
+                        <a role="menuitem" tabindex="1" href='@Url.Action("RemoveRole", "StructureUnit")' id="removeRoleLink">Remove role from user</a>
+                    </li>
+                </ul>
+            </div>
+        </td>
+        <td class="col-md-5" data-bind="text: roleName"></td>
+        <td class="col-md-5"><a data-bind="text: userName, attr: { href: url(), title: userName }" /></td>
+        <td class="col-md-5"><a data-bind="text: structureUnitName, visible: isInherited, attr: { href: structureUnitUrl, title: structureUnitName }" /></td>
+    </tr>
+</script>
+
+<div class="dropdown" id="suMenu">
+    <button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+        Actions
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+        <li role="presentation" data-bind='click: onAddLinkClick, enable: onAddLinkClickEnabled'>
+            <a role="menuitem" tabindex="1" href='@Url.Action("Add", "StructureUnit", new { Area = "Administration" })' id="addLink">Add subunit</a>
+        </li>
+        <li role="presentation" data-bind='click: onDeleteLinkClick, enable: onDeleteLinkClickEnabled'>
+            <a role="menuitem" tabindex="2" href='@Url.Action("Delete", "StructureUnit", new { Area = "Administration" })' id="deleteLink">Delete</a>
+        </li>
+        <li role="presentation" data-bind='click: onUpdateLinkClick, enable: onUpdateLinkClickEnabled'>
+            <a role="menuitem" tabindex="3" href='@Url.Action("Update", "StructureUnit", new { Area = "Administration" })' id="updateLink">Edit</a>
+        </li>
+        <li role="presentation" class="divider"></li>
+        <li role="presentation" data-bind='click: onGrantUserRoleLinkClick, enable: onGrantUserRoleLinkClickEnabled'>
+            <a role="menuitem" tabindex="3" href='@Url.Action("GrantUserRole", "StructureUnit", new { Area = "Administration" })' id="granUserRoleLink">Grant role</a>
+        </li>
+    </ul>
+</div>
+
+<div id="details">
+    <div class="validation-summary-errors">
+        <ul data-bind="foreach: errors">
+            <li>
+                <span data-bind="text: $data"> </span>
+            </li>
+        </ul>
+    </div>
+    <ul>
+        <li>
+            <label for="shortname">ShortName</label>
+            <span id="shortname" data-bind='text: shortName'/>
+        </li>
+        <li>
+            <label for="name">Name</label>
+            <span id="name" data-bind='text: name'/>
+        </li>
+    </ul>
+    <table class="table table-striped table-hover" id="company_roles_table" data-bind="visible: usersRoles.items().length > 0">
+        <thead>
+        <tr>
+            <th></th>
+            <th>Role</th>
+            <th>User</th>
+            <th>Inheritance</th>
+        </tr>
+        </thead>
+        <tbody data-bind="template: {
+    name: 'UsersRoles',
+    foreach: usersRoles.items
+}"></tbody>
+    </table>
+</div>
+
+

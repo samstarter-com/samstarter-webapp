@@ -1,0 +1,61 @@
+﻿<script type="text/html" id="MachineDetail">
+    <tr data-bind="click: onDetailRowClick, css: { info: isSelected() == true }">
+        <td data-bind="text: name"></td>
+        <td data-bind="text: domainUserName"></td>
+        <td data-bind="text: domainUserDomainName"></td>
+        <td data-bind="text: linkedUserName"></td>
+    </tr>
+</script>
+
+@await Html.PartialAsync("~/Views/Shared/_PagingPanelTemplate.cshtml")
+
+<hgroup class="title">
+    <h1>Append observable process to machine</h1>
+</hgroup>
+
+<div class="col-md-12">
+
+    <fieldset>
+        <div class="col-md-4" id="obsevable_m">
+            <div id="jstree_demo_div" data-bind="jstree: { data: data, onTreeChange: onTreeChange }"></div>
+        </div>
+        <div class="col-md-8" id="machineContent">
+            <table class="table table-striped table-hover" id="users_table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Current domain user</th>
+                        <th>Current domain</th>
+                        <th>Linked user</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="template: {
+    name: 'MachineDetail',
+    foreach: items
+}">
+                </tbody>
+            </table>
+
+            <div data-bind="template: {
+    name: 'PagingPanel',
+    data: paging
+}"></div>
+        </div>
+    </fieldset>
+    <div id="appendMachine">
+        <form data-bind="submit: append">
+            <div class="validation-summary-errors">
+                <ul data-bind="foreach: errors">
+                    <li>
+                        <span data-bind="text: $data"> </span>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-12">
+                <input type="submit" value="Append" />
+            </div>
+        </form>
+
+
+    </div>
+</div>

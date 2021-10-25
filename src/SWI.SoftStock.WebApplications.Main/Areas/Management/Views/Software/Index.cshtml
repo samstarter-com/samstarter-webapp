@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "Software";
+    Layout = "../Shared/ManagementLayout.cshtml";
+}
+
+<link rel="stylesheet" href="/ui/jstree/themes/style.min.css" />
+<script src="/ui/jstree/jstree.min.js"></script>
+
+<script src="/app/js/softwarelogic.js"></script>
+
+<div class="col-md-2 filterpanel">
+    <div id="compFilter">
+        <div class="radio">
+            <label>
+                <input type="checkbox" id="includeSubItemsId" data-bind="checked: includeSubItems, click: onIncludeSubItemsClick">Include subunits
+            </label>
+        </div>
+        <div id="jstree_demo_div" data-bind="jstree: { data: data, onTreeChange: onTreeChange }"></div>
+    </div>
+</div>
+<div class="col-md-10">
+    <div id="softwareContent">
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+
+        $(document).ready(function () {
+            const listTemplate = `/${MANAGEMENT_SOFTWARES_PAGE}/list`;
+            const detailTemplate = `/${MANAGEMENT_SOFTWARES_PAGE}/details`;
+            const urlParams = new URLSearchParams(window.location.search);
+
+            const id = urlParams.get('id') || '';
+
+            const contentElement = document.getElementById("softwareContent");
+            const filterElement = document.getElementById("compFilter");
+            const defaultDataVmCnstr = () => new SoftwaresListViewModel(listTemplate);
+            const pagevm = new SoftwarePageViewModel(defaultDataVmCnstr, contentElement, filterElement);
+            const datavm = id !== "" ? new SoftwareViewModel(id, detailTemplate, pagevm.menu) : new SoftwaresListViewModel(listTemplate, pagevm.menu);
+            pagevm.setDataVM(datavm);
+
+            datavm.init({
+                id: urlParams.get('id') || '',
+                structureUnitId: urlParams.get('cid') || '',
+                includeSubItems: urlParams.get('includeSubItems') || 0,
+                filterName: urlParams.get('filterName') || '',
+                filterPublisherName: urlParams.get('filterPublisherName') || '',
+                filterVersion: urlParams.get('filterVersion') || ''
+            });
+
+            pagevm.afterReload = function () {
+                pagevm.menu.selectedItem(pagevm.dataVM._name === 'details' ? pagevm.dataVM : null);
+
+            };
+            pagevm.reload();
+        });
+    });
+</script>

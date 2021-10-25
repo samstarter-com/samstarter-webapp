@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Software";
+    Layout = "../Shared/PersonalLayout.cshtml";
+}
+
+<script src="~/app/js/personalsoftwarelogic.js"></script>
+
+@await Html.PartialAsync("~/Views/Shared/_PagingPanelTemplate.cshtml")
+
+<div class="col-md-2 filterpanel">
+    <div id="machineFilter">
+        @await Html.PartialAsync("~/Areas/Personal/Views/PersonalMachine/Machines.cshtml")
+    </div>
+</div>
+<div class="col-md-10">
+    <div id="softwareContent">
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $(document).ready(function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const listTemplate = '/personal/softwares/list';
+            const contentElement = document.getElementById("softwareContent");
+            const filterElement = document.getElementById("machineFilter");
+            const defaultDataVmCnstr = () => new PersonalSoftwaresListViewModel(listTemplate);
+            const pagevm = new PersonalSoftwarePageViewModel(defaultDataVmCnstr, contentElement, filterElement);
+            const datavm = new PersonalSoftwaresListViewModel(listTemplate, pagevm.menu);
+            pagevm.setDataVM(datavm);
+
+            datavm.init({
+                machineId: urlParams.get('machineid') || '',
+                filterType: urlParams.get('filterType') || ''
+            });
+
+            pagevm.afterReload = function () {
+                $('#isHasLicense').trigger('change');
+            };
+            pagevm.reload();
+        });
+    });
+</script>

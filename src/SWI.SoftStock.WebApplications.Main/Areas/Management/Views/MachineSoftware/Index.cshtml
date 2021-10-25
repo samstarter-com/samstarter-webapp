@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Software on machine";
+    Layout = "../Shared/ManagementLayout.cshtml";
+}
+
+<script src="/app/js/machinesoftwarelogic.js"></script>
+
+<div class="col-md-12">
+    <div id="machineSoftwareContent">
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $(document).ready(function () {
+            const listTemplate = `/${MANAGEMENT_MACHINE_SOFTWARES_PAGE}/List`;
+            const urlParams = new URLSearchParams(window.location.search);
+            const id = urlParams.get('id') || '';
+            const contentElement = document.getElementById("machineSoftwareContent");
+            const defaultDataVmCnstr = () => new MachineSoftwaresListViewModel(listTemplate);
+            const pagevm = new MachineSoftwarePageViewModel(defaultDataVmCnstr, contentElement, null, id);
+            const datavm = new MachineSoftwaresListViewModel(listTemplate, pagevm.menu);
+            pagevm.setDataVM(datavm);
+
+            datavm.init({
+                id: urlParams.get('id') || '',
+                filterType: urlParams.get('filterType') || 1
+            });
+
+            pagevm.afterReload = function() {
+                $('#isHasLicense').trigger('change');
+            };
+
+            pagevm.reload();
+
+        });
+    });
+</script>
+

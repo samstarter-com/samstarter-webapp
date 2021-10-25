@@ -1,0 +1,152 @@
+﻿<script type="text/html" id="SoftwareDetail">
+    <tr data-bind="click: onDetailRowClick, css: { info: isSelected() == true }">
+        <td>
+            <div class="dropdown">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                    <li role="presentation" data-bind='click:  menu().onCreateLicenseRequestClick, enable:  menu().onCreateLicenseRequestClickEnabled'>
+                        <a role="menuitem" tabindex="3" href='@Url.Action("SaveLicenseRequest", "LicenseRequest", new { area = "Management" })' id="createLicenseRequest">Create license request</a>
+                    </li>
+                    <li role="presentation" class="divider"></li>
+                    <li role="presentation" data-bind='click: menu().onLinkToLicenseClick, enable: menu().onLinkToLicenseClickEnabled'>
+                        <a role="menuitem" tabindex="3" href='@Url.Action("LicenseSoftware", "Licensing", new { area = "Management" })' id="linkToLicenseLink">License</a>
+                    </li>
+                    <li role="presentation" data-bind='click: menu().onUnLinkFromLicenseClick, enable: menu().onUnLinkFromLicenseClickEnabled'>
+                        <a role="menuitem" tabindex="3" href='@Url.Action("UnLicenseSoftware", "Licensing", new { area = "Management" })' id="unLinkFromLicenseLink">Remove license</a>
+                    </li>
+                    <li role="presentation" class="divider"></li>
+                    <li role="presentation">
+                        <a role="menuitem" tabindex="2" data-bind="attr: { href: url() }">Details</a>
+                    </li>
+
+                </ul>
+            </div>
+        </td>
+        <td data-bind="text: name"></td>
+        <td data-bind="text: publisherName"></td>
+        <td data-bind="text: version"></td>
+        <td>
+            <div data-bind="if: systemComponent()=='1'">
+                <span class="glyphicon glyphicon-ok"></span>
+            </div>
+        </td>
+        <td>
+            <div data-bind="if: windowsInstaller()=='1'">
+                <span class="glyphicon glyphicon-ok"></span>
+            </div>
+        </td>
+        <td data-bind="text: releaseType"></td>
+        <td data-bind="text: discoveryDate"></td>
+        <td data-bind="text: installDate"></td>
+        <td>
+            <div data-bind="if: hasLicense()=='1'">
+                <span class="glyphicon glyphicon-ok"></span>
+            </div>
+        </td>
+        <td><a data-bind="text: licenseName, attr: { href: licenseUrl, title: licenseName }" /></td>
+    </tr>
+</script>
+
+@await Html.PartialAsync("~/Views/Shared/_PagingPanelTemplate.cshtml")
+@await Html.PartialAsync("~/Views/Shared/_ReportPanelTemplate.cshtml")
+
+<div id="softwareList">
+    <div id="list">
+        <h4 style="display:inline;">Software on machine: </h4><a data-bind="attr: { href: machineUrl() }"><h4 style="display:inline;" data-bind="text: machineName"></h4></a>
+        <div data-bind="template: {name: 'ReportPanel',data: reporting}"></div>
+        <table class="table table-striped table-hover" id="softwares_table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th id="thName">Name</th>
+                    <th id="thPublisherName">Publisher</th>
+                    <th id="thVersion">Version</th>
+                    <th id="thSystemComponent">System component</th>
+                    <th id="thWindowsInstaller">Windows installer</th>
+                    <th id="thReleaseType">Release type</th>
+                    <th id="thDiscoveryDate">Discovery date</th>
+                    <th id="thInstallDate">Installed date</th>
+                    <th id="thHasLicense">Licensed</th>
+                    <th id="thLicenseName">License</th>
+                </tr>
+                <tr>
+
+                    <td></td>
+                    <td>
+                        <div class="input-group">
+                            <input type="search" class="form-control" placeholder="Exact matches only..." data-bind="value: tableFilter.name">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button" data-bind='click: tableFilter.onApplyClick'><span class="glyphicon glyphicon-filter"></span></button>
+                            </span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group">
+                            <input type="search" class="form-control" placeholder="Exact matches only..." data-bind="value: tableFilter.publisherName">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button" data-bind='click: tableFilter.onApplyClick'><span class="glyphicon glyphicon-filter"></span></button>
+                            </span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group">
+                            <input type="search" class="form-control" placeholder="Exact matches only..." data-bind="value: tableFilter.version">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button" data-bind='click: tableFilter.onApplyClick'><span class="glyphicon glyphicon-filter"></span></button>
+                            </span>
+                        </div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <div class="input-group">
+                            <div id="btn-group">
+                                <button data-toggle="dropdown" class="btn dropdown-toggle" data-placeholder="Please select">Checked option <span class="caret"></span></button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <input type="checkbox" id="isHasLicense" data-bind='checked: tableFilter.isHasLicense'>
+                                        <label for="isHasLicense">Licensed</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="hasExpiredLicense" data-bind='checked: tableFilter.hasExpiredLicense'>
+                                        <label for="hasExpiredLicense">Expired license</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="isNotHasLicense" data-bind='checked: tableFilter.isNotHasLicense'>
+                                        <label for="isNotHasLicense">Unlicensed</label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button" id="applyFilter" data-bind='click: tableFilter.onApplyClick'><span class="glyphicon glyphicon-filter"></span></button>
+                            </span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group">
+                            <input type="search" class="form-control" placeholder="Exact matches only..." data-bind="value: tableFilter.licenseName">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button" data-bind='click: tableFilter.onApplyClick'><span class="glyphicon glyphicon-filter"></span></button>
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+            </thead>
+            <tbody data-bind="template: {
+    name: 'SoftwareDetail',
+    foreach: items
+    }"></tbody>
+        </table>
+
+        <div data-bind="template: {
+        name: 'PagingPanel',
+        data: paging
+    }"></div>
+    </div>
+</div>

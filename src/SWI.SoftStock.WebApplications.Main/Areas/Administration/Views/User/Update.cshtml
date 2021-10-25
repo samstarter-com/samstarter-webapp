@@ -1,0 +1,49 @@
+﻿@model  SWI.SoftStock.WebApplications.Main.Models.UserModelEx
+
+<hgroup class="title">
+    <h1>Update user</h1>
+</hgroup>
+<div id="update">
+    <form data-bind="submit: updateUser">
+
+        <div class="validation-summary-errors">
+            <ul data-bind="foreach: errors">
+                <li>
+                    <span data-bind="text: $data"> </span>
+                </li>
+            </ul>
+        </div>     
+
+        <fieldset>
+        
+            <ol>
+                <li>
+                    @Html.LabelFor(m => m.UserName)
+                    @Html.TextBoxFor(m => m.UserName, new { data_bind = "value: userName" })
+                    @Html.ValidationMessageFor(m => m.UserName)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.FirstName)
+                    @Html.TextBoxFor(m => m.FirstName, new { data_bind = "value: firstName" })
+                    @Html.ValidationMessageFor(m => m.FirstName)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.LastName)
+                    @Html.TextBoxFor(m => m.LastName, new { data_bind = "value: lastName" })
+                    @Html.ValidationMessageFor(m => m.LastName)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.Email)
+                    @Html.TextBoxFor(m => m.Email, new { data_bind = "value: email" })
+                    @Html.ValidationMessageFor(m => m.Email)
+                </li>
+                <li>
+                    <label for="user_su">Structure unit</label>
+                    <div id="user_su" data-bind="jstree: { data: structureUnits, onTreeChange: structureUnitChanging }"></div>                  
+                </li>
+            </ol>
+            <input type="submit" value="Save" />
+        </fieldset>
+      
+        </form>
+</div>

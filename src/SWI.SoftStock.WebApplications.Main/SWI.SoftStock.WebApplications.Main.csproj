@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <UserSecretsId>8546e1b3-6839-4b73-95ac-bd9b95402a8a</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileFile>..\..\Dockerfile</DockerfileFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Areas\Personal\Data\**" />
+    <Compile Remove="Areas\Personal\Models\**" />
+    <Compile Remove="Views\Management\**" />
+    <Content Remove="Areas\Personal\Data\**" />
+    <Content Remove="Areas\Personal\Models\**" />
+    <Content Remove="Views\Management\**" />
+    <EmbeddedResource Remove="Areas\Personal\Data\**" />
+    <EmbeddedResource Remove="Areas\Personal\Models\**" />
+    <EmbeddedResource Remove="Views\Management\**" />
+    <None Remove="Areas\Personal\Data\**" />
+    <None Remove="Areas\Personal\Models\**" />
+    <None Remove="Views\Management\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="package.json" />
+    <Content Remove="wwwroot\app\js\changepasswordlogic.js" />
+    <Content Remove="wwwroot\app\js\contactlogic.js" />
+    <Content Remove="wwwroot\app\js\jqplot.js" />
+    <Content Remove="wwwroot\app\js\machinesoftwarelogic.js" />
+    <Content Remove="wwwroot\app\js\machineswithobservablelogic.js" />
+    <Content Remove="wwwroot\app\js\managementlogic.js" />
+    <Content Remove="wwwroot\app\js\observablelogic.js" />
+    <Content Remove="wwwroot\app\js\personallicenserequestlogic.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\app\js\changepasswordlogic.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\app\js\contactlogic.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\app\js\jqplot.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\app\js\machinesoftwarelogic.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\app\js\machineswithobservablelogic.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\app\js\managementlogic.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\app\js\observablelogic.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\app\js\personallicenserequestlogic.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="package.json" />
+    <None Include="wwwroot\app\js\changepasswordlogic.js" />
+    <None Include="wwwroot\app\js\contactlogic.js" />
+    <None Include="wwwroot\app\js\jqplot.js" />
+    <None Include="wwwroot\app\js\machinesoftwarelogic.js" />
+    <None Include="wwwroot\app\js\machineswithobservablelogic.js" />
+    <None Include="wwwroot\app\js\managementlogic.js" />
+    <None Include="wwwroot\app\js\observablelogic.js" />
+    <None Include="wwwroot\app\js\personallicenserequestlogic.js" />
+    <None Include="wwwroot\favicon.ico" />
+    <None Include="wwwroot\fonts\glyphicons-halflings-regular.eot" />
+    <None Include="wwwroot\fonts\glyphicons-halflings-regular.svg" />
+    <None Include="wwwroot\fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="wwwroot\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="wwwroot\Images\accent.png" />
+    <None Include="wwwroot\Images\aspNetHome.png" />
+    <None Include="wwwroot\Images\bullet.png" />
+    <None Include="wwwroot\Images\BusyIndicator.gif" />
+    <None Include="wwwroot\Images\facebook.png" />
+    <None Include="wwwroot\Images\findHosting.png" />
+    <None Include="wwwroot\Images\heroAccent.png" />
+    <None Include="wwwroot\Images\NuGetGallery.png" />
+    <None Include="wwwroot\Images\orderedListOne.png" />
+    <None Include="wwwroot\Images\orderedListThree.png" />
+    <None Include="wwwroot\Images\orderedListTwo.png" />
+    <None Include="wwwroot\Images\twitter.png" />
+    <None Include="wwwroot\Images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <None Include="wwwroot\Images\ui-bg_flat_75_ffffff_40x100.png" />
+    <None Include="wwwroot\Images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <None Include="wwwroot\Images\ui-bg_glass_65_ffffff_1x400.png" />
+    <None Include="wwwroot\Images\ui-bg_glass_75_dadada_1x400.png" />
+    <None Include="wwwroot\Images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <None Include="wwwroot\Images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <None Include="wwwroot\Images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <None Include="wwwroot\Images\ui-icons_222222_256x240.png" />
+    <None Include="wwwroot\Images\ui-icons_2e83ff_256x240.png" />
+    <None Include="wwwroot\Images\ui-icons_454545_256x240.png" />
+    <None Include="wwwroot\Images\ui-icons_888888_256x240.png" />
+    <None Include="wwwroot\Images\ui-icons_cd0a0a_256x240.png" />
+    <None Include="wwwroot\Images\windowsLive.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="log4net" Version="2.0.11" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.TagHelpers" Version="2.2.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="Serilog.AspNetCore" Version="3.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\sitemap.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

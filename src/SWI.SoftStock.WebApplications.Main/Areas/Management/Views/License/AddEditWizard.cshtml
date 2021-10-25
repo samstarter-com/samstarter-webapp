@@ -1,0 +1,149 @@
+﻿@model  SWI.SoftStock.WebApplications.Main.Models.LicenseModelEx
+<script type="text/html" id="LinkedSoftwareDetail">
+    <tr data-bind="click: onDetailRowClick, css: { info: isSelected() == true }">
+        <td data-bind="text: name"></td>
+        <td data-bind="text: publisherName"></td>
+        <td data-bind="text: version"></td>
+    </tr>
+</script>
+
+@await Html.PartialAsync("AddEditAlert")
+@await Html.PartialAsync("AddEditDocument")
+
+<script type="text/html" id="AddUpdateSoftwareForm">
+    <div id="rootwizard" data-bind='bootstrapWizard: { onNext: bootstrapWizardOnNext, onTabClick: bootstrapWizardOnTabClick, onTabShow: bootstrapWizardOnTabShow }'>
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <ul class="nav nav-tabs">
+                        <li><a data-toggle="tab" data-bind="attr: { href: '#' + isNew() + 'tab1' }">Main data</a></li>
+                        <li><a data-toggle="tab" data-bind="attr: { href: '#' + isNew() + 'tab2' }">Licensed software</a></li>
+                        <li><a data-toggle="tab" data-bind="attr: { href: '#' + isNew() + 'tab3' }">License documents</a></li>
+                        <li><a data-toggle="tab" data-bind="attr: { href: '#' + isNew() + 'tab4' }">Alerts</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="progress">
+            <div id="bar" class="progress-bar" style="width: 0%;">
+                <span class="sr-only"></span>
+            </div>
+        </div>
+        <div class="tab-content">
+            <div class="tab-pane active" data-bind="attr: { id: isNew() + 'tab1' }">
+                <ol>
+                    <li>
+                        @Html.LabelFor(m => m.Name)
+                        @Html.TextBoxFor(m => m.Name, new { data_bind = "value: name" })
+                        @Html.ValidationMessageFor(m => m.Name)
+                    </li>
+                    <li>
+                        <div class="col-md-12 nopadding">
+                            <div class="col-md-6 nopadding">
+                                @Html.LabelFor(m => m.LicenseTypeId)
+                                <select data-bind="options: licenseTypes, optionsText: 'name', optionsValue: 'id', value: licenseTypeId"></select>
+                                @Html.ValidationMessageFor(m => m.LicenseTypeId)
+                            </div>
+                            <div class="col-md-6 nopadding">
+                                @Html.LabelFor(m => m.Count)
+                                @Html.TextBoxFor(m => m.Count, new { @type = "number", @min = "0", @step = "1", @class = "form-control", data_bind = "value: count" })
+                                @Html.ValidationMessageFor(m => m.Count)
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="col-md-12 nopadding">
+                            <div class="col-md-6 nopadding">
+                                @Html.LabelFor(m => m.BeginDate)
+                                @Html.TextBoxFor(m => m.BeginDate, new { data_bind = "datepicker: beginDate, datepickerOptions: {changeMonth: true,changeYear: true,showButtonPanel: true}" })
+                                @Html.ValidationMessageFor(m => m.BeginDate)
+                            </div>
+                            <div class="col-md-6 nopadding">
+                                @Html.LabelFor(m => m.ExpirationDate)
+                                @Html.TextBoxFor(m => m.ExpirationDate, new { data_bind = "datepicker: expirationDate, datepickerOptions: {changeMonth: true,changeYear: true,showButtonPanel: true}" })
+                                @Html.ValidationMessageFor(m => m.ExpirationDate)
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        @Html.LabelFor(m => m.Comments)
+                        @Html.TextAreaFor(m => m.Comments, new { @class = "form-control", data_bind = "value: comments" })
+                        @Html.ValidationMessageFor(m => m.Comments)
+                    </li>
+                </ol>
+            </div>
+            <div class="tab-pane" data-bind="attr: { id: isNew() + 'tab2' }">
+                <div class="col-md-12 nopadding">
+                        @Html.LabelFor(m => m.HasLinkedSoftware)
+                    </div>
+                    <div class="col-md-4 nopadding">
+                        <input id="softwareAutocomplete" class="form-control" data-bind="autocomplete: { source: softwareAutocompleteSource, select: softwareAutocompleteSelect, renderItem: softwareAutocompleteRenderItem, renderHeader: softwareAutocompleteRenderHeader }" />
+                        @Html.HiddenFor(m => m.HasLinkedSoftware, new { data_bind = "value: hasLinkedSoftware" })
+                    </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-default btn-lg" data-bind="click: onAddLinkedSoftwareClick">
+                        <span class="glyphicon glyphicon-arrow-right"></span>
+                    </button>
+                    <button type="button" class="btn btn-default btn-lg" data-bind="click: onRemoveLinkedSoftwareClick">
+                        <span class="glyphicon glyphicon-arrow-left"></span>
+                    </button>
+                </div>
+                <div class="col-md-5 nopadding" style="max-height: 200px; overflow: auto">
+                    <table class="table table-striped table-hover" id="linkedsoftwares_table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Publisher</th>
+                                <th>Version</th>
+                            </tr>
+                        </thead>
+                        <tbody data-bind="template: {
+    name: 'LinkedSoftwareDetail',
+    foreach: linkedSoftwares
+}"></tbody>
+                    </table>
+                </div>
+                <div class="col-md-12 nopadding">
+                        @Html.ValidationMessageFor(m => m.HasLinkedSoftware)
+                    </div>
+            </div>
+            <div class="tab-pane" data-bind="attr: { id: isNew() + 'tab3' }">
+                <div class="col-md-12 nopadding">
+                    <label for="fileHolder">Documents</label>
+                </div>
+                <div class="col-md-12 nopadding" id="fileHolder" data-bind="template: { name: documentTemplate, foreach: documents }" />
+                <div class="col-md-12 nopadding">
+                    <div class="col-md-1 nopadding">
+                        <button type="button" class="btn btn-default btn-lg" data-bind="click: onAddDocumentClick" title="Add document">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </div>
+                </div>
+                <input type="hidden" id="linkedDocuments" name="linkedDocuments" data-bind="value: documentsId" />
+            </div>
+            <div class="tab-pane" data-bind="attr: { id: isNew() + 'tab4' }">
+                <div class="col-md-12 nopadding">
+                    <label for="alertHolder">Alerts</label>
+                </div>
+                <div class="col-md-12 nopadding" id="alertHolder" data-bind="template: { name: 'AlertDetail', foreach: alerts }" />
+                <div class="col-md-12 nopadding">
+                    <div class="col-md-1 nopadding">
+                        <button type="button" class="btn btn-default btn-lg" data-bind="click: onAddAlertClick" title="Add alert">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 nopadding">
+                <ul class="pager wizard">
+                    <li class="previous first" style="display:none;"><a href="#">First</a></li>
+                    <li class="previous"><a href="#">Previous</a></li>
+                    <li class="next last" style="display:none;"><a href="#">Last</a></li>
+                    <li class="next"><a href="#">Next</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+</script>

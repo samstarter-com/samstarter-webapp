@@ -1,0 +1,34 @@
+﻿<label for="system">System</label> 
+<ul  id="system" >
+    <li><label for="osName">OS</label>
+        <span type="text" id="osName" data-bind='text: operationSystem.name()' readonly="readonly" />
+    </li>
+
+    <li><label for="osVersion">OS version</label>
+        <span type="text" id="osVersion" data-bind='text: operationSystem.version()' readonly="readonly" />
+    </li>
+
+    <li><label for="osArchitecture">Architecture</label>
+        <span type="text" id="osArchitecture" data-bind='text: operationSystem.architecture()' readonly="readonly" />
+    </li>
+
+    <li><label for="osBuildNumber">Build number</label>
+        <span type="text" id="osBuildNumber" data-bind='text: operationSystem.buildNumber()' readonly="readonly" />
+    </li>
+
+    <li><label for="osBootMode">Boot mode</label>
+        <span type="text" id="osBootMode" data-bind='text: operationSystem.bootMode()' readonly="readonly" />
+    </li>
+
+    <li><label for="osLogicalDrives">Logical drives</label>
+        <span type="text" id="osLogicalDrives" data-bind='text: operationSystem.logicalDrives()' readonly="readonly" />
+    </li>
+
+    <li><label for="osSerialNumber">Serial number</label>
+        <span type="text" id="osSerialNumber" data-bind='text: operationSystem.serialNumber()' readonly="readonly" />
+    </li>
+
+    <li><label for="osSystemDirectory">System directory</label>
+        <span type="text" id="osSystemDirectory" data-bind='text: operationSystem.systemDirectory()' readonly="readonly" />
+    </li>
+</ul>

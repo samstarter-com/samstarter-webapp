@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Machines with installed licensed";
+    Layout = "../Shared/ManagementLayout.cshtml";
+}
+
+<script src="/app/js/licensemachinelogic.js"></script>
+
+<div class="col-md-12">
+    <div id="licensemachineContent">
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $(document).ready(function () {
+            const listTemplate =`/${MANAGEMENT_LICENSE_MACHINES_PAGE}/list`;
+            const urlParams = new URLSearchParams(window.location.search);
+            const licenseId = urlParams.get('licenseId') || '';
+
+            const contentElement = document.getElementById("licensemachineContent");
+
+            const defaultDataVmCnstr = () => new LicenseMachinesListViewModel(listTemplate);
+            const pagevm = new LicenseMachinePageViewModel(defaultDataVmCnstr, contentElement);
+
+            const datavm = new LicenseMachinesListViewModel(listTemplate, pagevm.menu);
+
+            pagevm.setDataVM(datavm);
+
+            datavm.init({
+                status: urlParams.get('status') || 1,
+                licenseId: licenseId
+            });
+
+            pagevm.afterReload = function () {
+                $('#statusFilter_1').trigger('change');
+            };
+
+            pagevm.reload();
+        });
+    });
+</script>
+

@@ -1,0 +1,70 @@
+﻿@using SWI.SoftStock.WebApplications.Main.Models
+
+<hgroup class="title">
+     @if (ViewBag.ViewType == LicenseRequestViewType.New)
+     {
+         <h1>Create license request</h1>
+     }
+     @if (ViewBag.ViewType == LicenseRequestViewType.Update)
+     {
+         <h1>Update license request</h1>
+     }
+</hgroup>
+<div id="licenseRequest">
+
+    <div class="col-md-12">
+        <form data-bind="submit: addLicenseRequest">
+
+        <div class="validation-summary-errors">
+            <ul data-bind="foreach: errors">
+                <li>
+                    <span data-bind="text: $data"> </span>
+                </li>
+            </ul>
+        </div>  
+        <fieldset>
+            <input type="hidden" id="Sending" name="Sending" data-bind="value: sending"/>
+            <ol>
+                <li>
+                    <label for="MachineName">Machine</label>
+                    <span type="text" id="MachineName" data-bind='text: machineName' readonly="readonly" />
+                </li>
+                <li>
+                    <label for="UserName">User</label>
+                    <span type="text" id="UserName" data-bind='text: userName' readonly="readonly" />
+                </li>
+                <li>
+                    <label for="UserEmail">User email</label>
+                    <span type="text" id="UserEmail" data-bind='text: userEmail' readonly="readonly" />
+                </li>
+                <li>
+                    <label for="SoftwareName">Software</label>
+                    <span type="text" id="SoftwareName" data-bind='text: softwareName' readonly="readonly" />
+                </li>
+                <li>
+                    <label for="SoftwarePublisher">Publisher</label>
+                    <span type="text" id="SoftwarePublisher" data-bind='text: softwarePublisher' readonly="readonly" />
+                </li>
+                <li>
+                    <label for="Text">Text</label>
+                    <textarea cols="20" data-bind="value: text" data-val="true"
+                              data-val-maxlength="License request text cannot be longer than 1000 characters"
+                              data-val-maxlength-max="1000" id="Text" name="Text" rows="2"></textarea>
+                </li>
+            </ol>
+            @if ((LicenseRequestViewType)ViewBag.ViewType == LicenseRequestViewType.New)
+            {
+                <input type="submit" id="@SWI.SoftStock.WebApplications.Main.Helpers.Constants.CreateSubmit" name="@SWI.SoftStock.WebApplications.Main.Helpers.Constants.CreateSubmit" value="Create" onclick="document.getElementById('Sending').value = false; " />
+                <input type="submit" id="@SWI.SoftStock.WebApplications.Main.Helpers.Constants.CreateAndSendSubmit" name="@SWI.SoftStock.WebApplications.Main.Helpers.Constants.CreateAndSendSubmit" value="Create and send" onclick="document.getElementById('Sending').value = true;" />
+            }
+
+            @if ((LicenseRequestViewType)ViewBag.ViewType == LicenseRequestViewType.Update)
+            {
+                <input type="submit" id="@SWI.SoftStock.WebApplications.Main.Helpers.Constants.SaveSubmit" name="@SWI.SoftStock.WebApplications.Main.Helpers.Constants.SaveSubmit" value="Save" onclick="document.getElementById('Sending').value = false;" />
+                <input type="submit" id="@SWI.SoftStock.WebApplications.Main.Helpers.Constants.SaveAndSendSubmit" name="@SWI.SoftStock.WebApplications.Main.Helpers.Constants.SaveAndSendSubmit" value="Save and send" onclick="document.getElementById('Sending').value =true;" />
+            }
+
+        </fieldset>
+        </form>
+    </div>
+</div>

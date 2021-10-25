@@ -1,0 +1,27 @@
+﻿<div id="headerAccount">
+
+    <div id="headerAccountLogged" data-bind="visible: isLogged()" style="display: none;">
+        <p>
+            Hello, <a class="username" href="/Account/ChangePassword" title="Change password" data-bind='text: userName'></a>!
+          
+            <a  data-bind='click: onLogoffLinkClick' href="/Account/LogOff">Log off</a>
+               
+        </p>
+    </div>
+    <div id="headerAccountUnLogged" data-bind="visible: isLogged()==false">
+        <ul>
+            <li data-bind='click: onLoginLinkClick'>
+                <a role="menuitem" tabindex="-1" href="/Account/Login" id="loginLink" data-dialog-title="Identification">Log in</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $(document).ready(function () {
+            var header = new AccountHeaderViewModel();
+            ko.applyBindings(header, document.getElementById('headerAccount'));         
+        });
+    });
+</script>
+

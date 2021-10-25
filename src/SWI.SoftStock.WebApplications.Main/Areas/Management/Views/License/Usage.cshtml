@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "License usage";
+    Layout = "../Shared/ManagementLayout.cshtml";
+}
+
+<script src="/app/js/licenseusagelogic.js"></script>
+<script src="/app/js/jqplot.js"></script>
+<!--[if lt IE 9]><script language="javascript" type="text/javascript" src="/ui/jqplot/excanvas.js"></script><![endif]-->
+
+<link rel="stylesheet" href="/ui/jqplot/jquery.jqplot.css" />
+
+<div class="col-md-12">
+    <div id="usageFilter">
+    </div>
+    <div id="usagecontent">
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+
+        $(document).ready(function () {
+            const listTemplate = `/${MANAGEMENT_LICENSES_PAGE}/UsageTable`;
+            const chartTemplate = `/${MANAGEMENT_LICENSES_PAGE}/UsageChart`;
+            const urlParams = new URLSearchParams(window.location.search);
+            const id = urlParams.get('id') || '';
+            const viewType = urlParams.get('viewType') || "2";
+            const range = urlParams.get('range') || 0;
+            const contentElement = document.getElementById("usagecontent");
+            const filterElement = document.getElementById("usageFilter");
+            const defaultDataVmCnstr = () => new UsageListViewModel(id, listTemplate);
+            const pagevm = new UsagePageViewModel(defaultDataVmCnstr, contentElement, filterElement, viewType, range);
+            const datavm = viewType === "2" ? new UsageListViewModel(id, listTemplate) : new UsageViewModel(id, chartTemplate, pagevm.menu);
+            datavm.init({
+                licenseId: urlParams.get('id') || '',
+                includeSubItems: urlParams.get('includeSubItems') || 0,
+                range: range,
+                from: urlParams.get('from') || '',
+                to: urlParams.get('to') || '',
+                viewType: viewType
+            });
+            pagevm.setDataVM(datavm);
+            pagevm.reload();
+        });
+    });
+</script>
+

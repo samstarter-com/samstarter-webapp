@@ -1,0 +1,23 @@
+﻿<hgroup class="title">
+    <h1>Unlock user</h1>
+</hgroup>
+<div id="unLock">
+    <form data-bind="submit: unlockUser">
+
+        <div class="validation-summary-errors">
+            <ul data-bind="foreach: errors">
+                <li>
+                    <span data-bind="text: $data"> </span>
+                </li>
+            </ul>
+        </div>
+        <fieldset>
+            <div style="margin: 15px 0 15px 15px;">
+                <span>Unlock </span><span class="itemname" data-bind='text: userName'></span><span>?</span>
+            </div>
+            <div>
+                <input type="submit" value="Unlock" />
+            </div>
+        </fieldset>
+    </form>
+</div>

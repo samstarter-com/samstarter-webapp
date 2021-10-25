@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "License request";
+    Layout = "../Shared/PersonalLayout.cshtml";
+}
+
+<script src="~/app/js/personallicenserequestlogic.js"></script>
+
+<div class="col-md-12">
+    <div id="licenseRequestContent">
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+
+        $(document).ready(function () {
+
+            const listTemplate = '/personal/licenserequests/List';
+            const detailTemplate = '/personal/licenserequests/Details';
+            const urlParams = new URLSearchParams(window.location.search);
+
+            const id = urlParams.get('id') || '';
+
+            const contentElement = document.getElementById("licenseRequestContent");
+            const defaultDataVmCnstr = () => new PersonalLicenseRequestsListViewModel(listTemplate);
+            const pagevm = new PersonalLicenseRequestPageViewModel(defaultDataVmCnstr, contentElement, null);
+            const datavm = id !== "" ? new PersonalLicenseRequestViewModel(id, detailTemplate, pagevm.menu) : new PersonalLicenseRequestsListViewModel(listTemplate, pagevm.menu);
+            pagevm.setDataVM(datavm);
+
+            datavm.init({
+                status: urlParams.get('status') || 1
+            });
+
+            pagevm.afterReload = function () {
+                $('#statusFilter_1').trigger('change');
+            };
+
+            pagevm.reload();
+        });
+    });
+</script>

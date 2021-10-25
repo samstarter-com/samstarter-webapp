@@ -1,0 +1,107 @@
+﻿<script type="text/html" id="LicenseRequestDetail">
+    <tr data-bind="click: onDetailRowClick, css: { info: isSelected() == true }">
+
+        <td>
+            <div class="dropdown">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                    <li role="presentation">
+                        <a role="menuitem" tabindex="2" data-bind="attr: { href: url() }">Details</a>
+                    </li>
+                    <li role="presentation" data-bind='click: menu().onUpdateLinkClick, enable: menu().onUpdateLinkClickEnabled'>
+                        <a role="menuitem" tabindex="2" href="/management/licenserequests/Update" id="updateLink">Edit</a>
+                    </li>
+                    <li role="presentation" data-bind='click: menu().onSendLinkClick, enable: menu().onSendLinkClickEnabled'>
+                        <a role="menuitem" tabindex="2" href="/management/licenserequests/Send" id="sendLink">Send</a>
+                    </li>
+                    <li role="presentation" data-bind='click: menu().onCreateLicenseLinkClick, enable: menu().onCreateLicenseLinkClickEnabled'>
+                        <a role="menuitem" tabindex="2" href="/management/licenserequests/CreateLicense" id="createLicenseLink">Create license</a>
+                    </li>
+                    <li role="presentation" data-bind='click: menu().onArchiveLinkClick, enable: menu().onArchiveLinkClickEnabled'>
+                        <a role="menuitem" tabindex="2" href="/management/licenserequests/Archive" id="archiveLink">Archive</a>
+                    </li>
+                </ul>
+            </div>
+        </td>
+
+        <td data-bind="text: machineName"></td>
+        <td data-bind="text: softwareName"></td>
+        <td data-bind="text: softwarePublisher"></td>
+        <td data-bind="text: text"></td>
+        <td data-bind="text: userName"></td>
+        <td data-bind="text: userEmail"></td>
+        <td data-bind="text: status"></td>
+        <td data-bind="text: createdOn"></td>
+        <td data-bind="text: modifiedOn"></td>
+    </tr>
+</script>
+
+@await Html.PartialAsync("~/Views/Shared/_PagingPanelTemplate.cshtml")
+
+<div id="licenseRequestList">
+    <div id="list">
+        <table class="table table-striped table-hover" id="licenseRequests_table">
+            <thead>
+                <tr>
+
+                    <th></th>
+
+                    <th id="thMachineName">Machine</th>
+                    <th id="thSoftwareName">Software</th>
+                    <th id="thSoftwarePublisher">Software publisher</th>
+                    <th id="thText">Text</th>
+                    <th id="thUserName">User</th>
+                    <th id="thUserEmail">Users email</th>
+                    <th id="thStatus">Status</th>
+                    <th id="thCreatedOn">Created on</th>
+                    <th id="thModifiedOn">Modified on</th>
+                </tr>
+                <tr>
+
+                    <td></td>
+
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <div class="input-group">
+                            <div id="btn-group">
+                                <button data-toggle="dropdown" class="btn dropdown-toggle" data-placeholder="Please select">Checked option <span class="caret"></span></button>
+                                <ul class="dropdown-menu">
+                                    @foreach (var status in ViewBag.Statuses)
+                                    {
+                                        <li>
+                                            <input type="checkbox" @string.Format("id=statusFilter_{0}", (int)status.Key) @string.Format("data-bind=checked:tableFilter.status_{0}", (int)status.Key)>
+                                            <label @string.Format("for=statusFilter_{0}", (int)status.Key)>@status.Value</label>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button" id="applyFilter" data-bind='click: tableFilter.onApplyClick'><span class="glyphicon glyphicon-filter"></span></button>
+                            </span>
+                        </div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody data-bind="template: {
+        name: 'LicenseRequestDetail',
+        foreach: items
+    }">
+            </tbody>
+        </table>
+
+        <div data-bind="template: {
+        name: 'PagingPanel',
+        data: paging
+    }"></div>
+    </div>
+</div>

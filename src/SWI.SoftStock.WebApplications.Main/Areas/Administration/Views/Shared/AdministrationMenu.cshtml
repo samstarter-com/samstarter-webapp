@@ -1,0 +1,9 @@
+﻿@model dynamic
+
+<div>
+    <ul class="nav nav-tabs">      
+            <li class="@(((string)ViewContext.RouteData.Values["Controller"]).ToLower() == "summary"  ? "active" : "")">@Html.ActionLink("Summary", "Index", "Summary")</li>
+            <li class="@(((string)ViewContext.RouteData.Values["Controller"]).ToLower() == "structureunit"  ? "active" : "")">@Html.ActionLink("Company", "Index", "StructureUnit")</li>
+            <li class="@(((string)ViewContext.RouteData.Values["Controller"]).ToLower() == "user"  ? "active" : "")">@Html.ActionLink("User", "Index", "User")</li>
+    </ul>
+</div>

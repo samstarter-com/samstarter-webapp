@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Observable";
+    Layout = "../Shared/ManagementLayout.cshtml";
+}
+<link rel="stylesheet" href="/ui/jstree/themes/style.min.css" />
+<script src="/ui/jstree/jstree.min.js"></script>
+
+<script src="/app/js/observablelogic.js"></script>
+
+<div class="col-md-12">
+    <div id="observableContent">
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+
+        $(document).ready(function () {
+            const listTemplate = `/${MANAGEMENT_OBSERVABLES_PAGE}/List`;
+            const detailTemplate = `/${MANAGEMENT_OBSERVABLES_PAGE}/Details`;
+            const urlParams = new URLSearchParams(window.location.search);
+
+            const id = urlParams.get('id') || '';
+
+            const contentElement = document.getElementById("observableContent");
+
+            const defaultDataVmCnstr = () => new ObservablesListViewModel(listTemplate);
+            const pagevm = new ObservablePageViewModel(defaultDataVmCnstr, contentElement);
+            const datavm = id !== "" ? new ObservableViewModel(id, detailTemplate, pagevm.menu) : new ObservablesListViewModel(listTemplate, pagevm.menu);
+            pagevm.setDataVM(datavm);
+
+            datavm.init({
+                id: urlParams.get('id') || '',
+                structureUnitId: urlParams.get('cid') || '',
+                includeSubItems: urlParams.get('includeSubItems') || 0
+            });
+
+            pagevm.reload();
+        });
+    });
+</script>
+

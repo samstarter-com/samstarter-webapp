@@ -1,0 +1,72 @@
+﻿@model SWI.SoftStock.WebApplications.Main.Models.FeedbackModel
+
+@{
+    ViewBag.Title = "Contact";
+    ViewBag.TagTitle = "SamStarter: contact us";
+}
+
+<script src="/app/js/contactlogic.js"></script>
+
+<section class="contact">
+    <div class="col-md-8" id="contactForm">
+        <h1>@ViewBag.Title.</h1>
+
+        <form data-bind="submit: sendFeedback">
+
+            <div class="validation-summary-errors">
+                <ul data-bind="foreach: errors">
+                    <li>
+                        <span data-bind="text: $data"> </span>
+                    </li>
+                </ul>
+            </div>
+
+            <fieldset>
+                <legend>Feedback</legend>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Title, new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(model => model.Title, new { @class = "form-control", data_bind = "value: title" })
+                        @Html.ValidationMessageFor(model => model.Title)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Email, new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control", data_bind = "value: email" })
+                        @Html.ValidationMessageFor(model => model.Email)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Comment, new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-10">
+                        @Html.TextAreaFor(model => model.Comment, 5, 40, new { @class = "form-control", data_bind = "value: comment" })
+                        @Html.ValidationMessageFor(model => model.Comment)
+                    </div>
+                </div>
+
+                <br />
+                <p class="Error">@ViewBag.ErrMessage </p>
+                <p>
+                    <input type="submit" value="Send" />
+                </p>
+            </fieldset>
+        </form>
+    </div>
+    <div class="col-md-4">
+        <h1>Get in touch</h1>
+        You can also contact us at:
+        <span><a href="mailto:info@samstarter.com">info@samstarter.com</a></span>
+    </div>
+</section>
+
+<script type="text/javascript">
+    $(function () {
+        $(document).ready(function () {
+            var header = new ContactViewModel();
+            ko.applyBindings(header, document.getElementById('contactForm'));
+        });
+    });
+</script>

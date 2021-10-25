@@ -1,0 +1,141 @@
+﻿<script type="text/html" id="LinkedSoftwares">
+    <tr>
+        <td>
+            <a data-bind="text: name, attr: { href: url, title: name }"/>
+        </td>
+        <td data-bind="text: version"></td>
+        <td data-bind="text: publisherName"></td>
+    </tr>
+</script>
+
+<script type="text/html" id="Alerts">
+    <tr>
+        <td data-bind="text: alertDateTimeFormatted"></td>
+        <td data-bind="text: alertText"></td>
+        <td data-bind="foreach: alertUsers">
+            <a data-bind="text: userName, attr: { href: url, title: userName }" />
+        </td>
+    </tr>
+</script>
+
+<script type="text/html" id="Documents">
+    <tr>
+        <td>
+            <a data-bind="text: name, click: onDownloadClick, attr: { href: downloadUrl, title: name }"></a>
+        </td>
+        <td data-bind="text: hcLocation"></td>
+    </tr>
+</script>
+
+<div id="licenseDetails">
+    <div class="dropdown" id="licenseMenu">
+        <button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+            Actions
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+
+            <li role="presentation"><a role="menuitem" tabindex="2" data-bind="attr: { href: selectedItem().usageUrl() }" id="usageLink">License usage</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="2" data-bind="attr: { href: selectedItem().machineUrl() }" id="machineLink">Machines with licensed software</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation" data-bind='click: onUpdateLinkClick'>
+                <a role="menuitem" tabindex="2" href="/management/licenses/Update" id="updateLink">Edit</a>
+            </li>
+            <li role="presentation" data-bind='click: onLinkToStructureUnitClick'>
+                <a role="menuitem" tabindex="2" href='@Url.Action("LinkToStructureUnit", "License", new { Area = "Management" })' id="linktoStructureUnitLink">Link to structure unit</a>
+            </li>
+            <li role="presentation" data-bind='click: onDeleteLinkClick'>
+                <a role="menuitem" tabindex="2" href="/management/licenses/Delete" id="deleteLink">Delete</a>
+            </li>
+
+        </ul>
+    </div>
+    <div id="details">
+        <ul>
+            <li>
+                <label for="name">Name</label>
+                <span id="name" data-bind='text: name' />
+            </li>
+            <li>
+                <label for="structureUnitName">License structure unit</label>
+                <a id="structureUnitName" data-bind='text: structureUnitName, attr: { href: structureUnitUrl, title: structureUnitName }'></a>
+            </li>
+            <li>
+                <label for="licenseTypeName">License type</label>
+                <span id="licenseTypeName" data-bind='text: licenseTypeName' />
+            </li>
+            <li>
+                <label for="count">License count</label>
+                <span id="count" data-bind='text: count' />
+            </li>
+            <li>
+                <label for="availableCount">Available license count</label>
+                <span id="availableCount" data-bind='text: availableCount' />
+            </li>
+            <li>
+                <label for="beginDate">Start date</label>
+                <span id="beginDate" data-bind='text: beginDateFormatted' />
+            </li>
+            <li>
+                <label for="expirationDate">Expiration date</label>
+                <span id="expirationDate" data-bind='text: expirationDateFormatted' />
+            </li>
+            <li>
+                <label for="comments">Comments</label>
+                <span id="comments" data-bind='text: comments' />
+            </li>
+            <li>
+                <label for="license_softwares_table">Licensed software</label>
+                <table class="table table-striped table-bordered" id="license_softwares_table">
+                    <thead>
+                        <tr>
+                            <th>Software</th>
+                            <th>Version</th>
+                            <th>Publisher</th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="template: {
+    name: 'LinkedSoftwares',
+    foreach: linkedSoftwares
+}">
+                    </tbody>
+                </table>
+            </li>
+
+            <li data-bind="visible: documents().length > 0">
+                <label for="license_documents_table">Documents</label>
+                <table class="table table-striped table-bordered" id="license_documents_table">
+                    <thead>
+                        <tr>
+                            <th>Document</th>
+                            <th>Hard copy location</th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="template: {
+    name: 'Documents',
+    foreach: documents
+}">
+                    </tbody>
+                </table>
+            </li>
+
+            <li data-bind="visible: alerts().length > 0">
+                <label for="license_alerts_table">Alerts</label>
+                <table class="table table-striped table-bordered" id="license_alerts_table">
+                    <thead>
+                        <tr>
+                            <th>Date and time</th>
+                            <th>Text</th>
+                            <th>Subscribers</th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="template: {
+    name: 'Alerts',
+    foreach: alerts
+}">
+                    </tbody>
+                </table>
+            </li>
+        </ul>
+    </div>
+</div>

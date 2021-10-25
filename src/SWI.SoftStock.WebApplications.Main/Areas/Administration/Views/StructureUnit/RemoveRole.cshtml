@@ -1,0 +1,24 @@
+﻿<hgroup class="title">
+    <h1>Remove role from user</h1>
+</hgroup>
+<div id="removeRole">
+    <form data-bind="submit: removeRole">
+
+        <div class="validation-summary-errors">
+            <ul data-bind="foreach: errors">
+                <li>
+                    <span data-bind="text: $data"> </span>
+                </li>
+            </ul>
+        </div>
+
+        <fieldset>          
+            <div style="margin: 15px 0 15px 15px;">
+                <span>Remove role </span><span class="itemname" data-bind='text: roleName'></span><span> from user </span><span class="itemname" data-bind='text: userName'></span><span>?</span>
+            </div>
+            <div>
+                <input type="submit" value="Remove role" />
+            </div>
+        </fieldset>
+        </form>
+</div>

@@ -1,0 +1,33 @@
+﻿@model  SWI.SoftStock.WebApplications.Main.Models.StructureUnitModel
+
+<hgroup class="title">
+    <h1>Create structure unit</h1>
+</hgroup>
+<div id="add">
+    <form data-bind="submit: addStrucutreUnit">
+
+        <div class="validation-summary-errors">
+            <ul data-bind="foreach: errors">
+                <li>
+                    <span data-bind="text: $data"> </span>
+                </li>
+            </ul>
+        </div>  
+
+        <fieldset>        
+            <ol>
+                <li>
+                    @Html.LabelFor(m => m.Name)
+                    @Html.TextBoxFor(m => m.Name, new { data_bind = "value: name" })
+                    @Html.ValidationMessageFor(m => m.Name)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.ShortName)
+                    @Html.TextBoxFor(m => m.ShortName, new { data_bind = "value: shortName" })
+                    @Html.ValidationMessageFor(m => m.ShortName)
+                </li>
+            </ol>
+            <input type="submit" value="Add" />
+        </fieldset>
+        </form>
+</div>

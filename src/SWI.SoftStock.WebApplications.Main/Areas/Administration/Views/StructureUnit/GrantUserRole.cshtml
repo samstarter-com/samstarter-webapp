@@ -1,0 +1,61 @@
+﻿<script type="text/html" id="UserDetail">
+    <tr  data-bind="click: onDetailRowClick, css: { info: isSelected() == true }">
+        <td data-bind="text: userName"></td>
+        <td data-bind="text: firstName"></td>
+        <td data-bind="text: lastName"></td>
+    </tr>
+</script>
+
+@await Html.PartialAsync("~/Views/Shared/_PagingPanelTemplate.cshtml")
+
+<hgroup class="title">
+    <h1>Grant user role</h1>
+</hgroup>
+<div id="grantRole">
+    <div class="col-md-12">
+        <form data-bind="submit: grantRoleStrucutreUnit">
+
+            <div class="validation-summary-errors">
+                <ul data-bind="foreach: errors">
+                    <li>
+                        <span data-bind="text: $data"> </span>
+                    </li>
+                </ul>
+            </div> 
+
+            <fieldset>
+                <label for="roles">Select role</label>
+                <div class="col-md-12">
+                    <select data-bind="options: availableRoles, optionsText: 'roleName', optionsValue: 'roleId', value: selectedRoleId"></select>
+                </div>
+                <div class="col-md-12 spacer30"></div>
+                <label for="structureUnit_u">Select user</label>
+                <div class="col-md-4" id="structureUnit_u" data-bind="jstree: { data: structureUnits, onTreeChange: onTreeChange }">
+                </div>
+                <div class="col-md-8" id="userContent">
+                   <table class="table table-striped table-hover" id="users_table">
+                            <thead>
+                                <tr>
+                                    <th>User name</th>
+                                    <th>First name</th>
+                                    <th>Last name</th>
+                                </tr>
+                            </thead>
+                            <tbody data-bind="template: {
+        name: 'UserDetail',
+        foreach: selectedLinkUsersListItem().items
+    }"></tbody>
+                        </table>
+
+                        <div data-bind="template: {
+        name: 'PagingPanel',
+        data: selectedLinkUsersListItem().paging
+    }"></div>
+                </div>
+                <div class="col-md-12">
+                    <input type="submit" value="Grant" />
+                </div>
+            </fieldset>
+            </form>
+</div>
+</div>

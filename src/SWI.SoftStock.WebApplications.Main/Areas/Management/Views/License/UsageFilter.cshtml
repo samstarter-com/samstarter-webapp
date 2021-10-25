@@ -1,0 +1,31 @@
+﻿@model SWI.SoftStock.WebApplications.Main.Models.UsageFilterModel
+
+<div id="lfPlain">
+    <div style="margin: 10px 0">
+        <div class="col-md-12 nopadding">
+               <div class="col-md-3 nopadding">
+                @Html.LabelFor(m => m.ViewType)
+                @Html.DropDownListFor(m => m.ViewType, new SelectList(ViewBag.ViewTypes, "Id", "Name"),  new {  @class = "form-control", data_bind="value: viewType" })
+                @Html.ValidationMessageFor(m => m.ViewType)
+            </div>
+            <div class="col-md-3 nopadding">
+                @Html.LabelFor(m => m.Range)
+                @Html.DropDownListFor(m => m.Range, new SelectList(ViewBag.BarChartRangeTypes, "Id", "Name"),  new {  @class = "form-control", data_bind="value: range" })
+                @Html.ValidationMessageFor(m => m.Range)
+            </div>
+            <div class="col-md-3 nopadding">
+                @Html.LabelFor(m => m.From)
+                @Html.TextBoxFor(m => m.From, new { @class = "form-control",data_bind="datepicker: from, datepickerOptions: {changeMonth: true,changeYear: true,showButtonPanel: true,dateFormat: 'dd.mm.yy'}" })
+                @Html.ValidationMessageFor(m => m.From)
+            </div>
+            <div class="col-md-3 nopadding">
+                @Html.LabelFor(m => m.To)
+                @Html.TextBoxFor(m => m.To, new { @class = "form-control",data_bind="datepicker: to, datepickerOptions: {changeMonth: true,changeYear: true,showButtonPanel: true,dateFormat: 'dd.mm.yy'}" })
+                @Html.ValidationMessageFor(m => m.To)
+            </div>
+        </div>   
+    </div>
+    <button id="applyFilter" data-bind='click: onApplyClick'>
+        Apply filter
+    </button>
+</div>

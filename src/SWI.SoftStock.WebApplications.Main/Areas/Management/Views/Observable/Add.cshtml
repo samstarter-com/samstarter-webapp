@@ -1,0 +1,32 @@
+﻿@model  SWI.SoftStock.WebApplications.Main.Models.ObservableModelEx
+
+<hgroup class="title">
+    <h1>Create observable process</h1>
+</hgroup>
+<div id="add">
+    <form data-bind="submit: addObservable">
+        <div class="validation-summary-errors">
+            <ul data-bind="foreach: errors">
+                <li>
+                    <span data-bind="text: $data"> </span>
+                </li>
+            </ul>
+        </div>
+        <fieldset>
+            <ol>
+                <li>
+                @Html.LabelFor(m => m.ProcessName)
+                @Html.TextBoxFor(m => m.ProcessName, new { @class = "form-control", data_bind = "value: processName" })
+                @Html.ValidationMessageFor(m => m.ProcessName)
+            </li>
+            <li>
+                <label for="softwareAutocomplete">Software</label>
+                <input type="text" id="softwareAutocomplete" class="form-control" data-bind="autocomplete: { source: softwareAutocompleteSource, select: softwareAutocompleteSelect, change: softwareAutocompleteChange }" />
+                @Html.HiddenFor(m => m.SoftwareId)
+                @Html.ValidationMessageFor(m => m.SoftwareId)
+            </li>
+        </ol>
+        <input type="submit" value="Add" />
+    </fieldset>
+</form>
+</div>

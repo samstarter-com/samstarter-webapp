@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Management";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="/app/js/managementlogic.js"></script>
+
+<div class="container-fluid">
+        <div  class="row-fluid">
+            @await Html.PartialAsync("ManagementMenu.cshtml")
+        </div>
+        <div class="row">
+            @RenderBody()
+        </div>
+</div>

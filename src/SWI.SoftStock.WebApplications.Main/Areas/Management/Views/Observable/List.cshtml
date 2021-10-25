@@ -1,0 +1,88 @@
+﻿<script type="text/html" id="ObservableDetail">
+    <tr data-bind="click: onDetailRowClick, css: {info: isSelected()==true}">
+        <td>
+            <div class="dropdown">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
+                    <li role="presentation">
+                        <a role="menuitem" tabindex="2" data-bind="attr: { href: url() }">Details</a>
+                    </li>
+                    <li role="presentation" data-bind='click: menu().onAppendLinkClick, enable: menu().onAppendLinkClickEnabled'><a role="menuitem" tabindex="-1" href="/management/observables/append" id="appendLink">Append to machine</a></li>
+                    <li role="presentation" data-bind='click: menu().onDeleteLinkClick, enable: menu().onDeleteLinkClickEnabled'><a role="menuitem" tabindex="2" href="/management/observables/delete" id="deleteLink">Delete</a></li>
+                </ul>
+            </div>
+
+        </td>
+        <td data-bind="text: processName"></td>
+        <td><a data-bind='text: softwareName, attr: { href: softwareUrl, title: softwareName }' /></td>
+        <td data-bind="text: publisherName"></td>
+        <td data-bind="text: createdBy"></td>
+        <td><a data-bind="text: appendedMachines, attr: { href: '@Url.Action("Machine", "Observable")'+'?id=' + observableId() }" /></td>
+    </tr>
+</script>
+
+@await Html.PartialAsync("~/Views/Shared/_PagingPanelTemplate.cshtml")
+<div id="observableList">
+    <div class="dropdown" id="observableMenu">
+        <button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+            Actions
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+            <li role="presentation" data-bind='click: onAddLinkClick'>
+                <a role="menuitem" tabindex="-1" href="/management/observables/add" id="addLink">Create</a>
+            </li>
+        </ul>
+    </div>
+
+    <div id="list">
+        <table class="table table-striped table-hover" id="observables_table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th id="thProcessName">Process name</th>
+                    <th id="thSoftwareName">Software name</th>
+                    <th id="thPublisherName">Software publisher name</th>
+                    <th id="thCreatedBy">Created by</th>
+                    <th id="thAppendedMachines">Appended machines</th>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <div class="input-group">
+                            <input type="search" class="form-control" placeholder="Exact matches only..." data-bind="value: tableFilter.processName">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button" data-bind='click: tableFilter.onApplyClick'><span class="glyphicon glyphicon-filter"></span></button>
+                            </span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group">
+                            <input type="search" class="form-control" placeholder="Exact matches only..." data-bind="autocomplete: { source: tableFilter.softwareFilterAutocompleteSource, select: tableFilter.softwareFilterAutocompleteSelect, change: tableFilter.softwareFilterAutocompleteChange }">
+
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button" data-bind='click: tableFilter.onApplyClick'><span class="glyphicon glyphicon-filter"></span></button>
+                            </span>
+                        </div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody data-bind="template: {
+    name: 'ObservableDetail',
+    foreach: items
+    }">
+            </tbody>
+        </table>
+
+        <div data-bind="template: {
+        name: 'PagingPanel',
+        data: paging
+    }"></div>
+    </div>
+</div>

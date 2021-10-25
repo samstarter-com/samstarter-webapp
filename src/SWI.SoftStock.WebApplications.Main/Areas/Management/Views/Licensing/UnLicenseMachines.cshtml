@@ -1,0 +1,23 @@
+﻿<hgroup class="title">
+    <h1>Remove license from machine</h1>
+</hgroup>
+<div id="unLicenseSoftwareOnAllMachine">
+    <form data-bind="submit: unLicenseMachines">
+    <div class="validation-summary-errors">
+        <ul data-bind="foreach: errors">
+            <li>
+                <span data-bind="text: $data"> </span>
+            </li>
+        </ul>
+    </div>
+        <fieldset>
+            <input id="licenseId" name="licenseId" type="hidden" data-bind='value: licenseId'>
+            <div style="margin: 15px 0 15px 15px;">
+                <span>Remove license </span><span class="itemname" id='licenseName' data-bind='text: licenseName'></span><span> from all machines?</span>
+            </div>
+            <div>
+                <input type="submit" value="Remove" />
+            </div>
+        </fieldset>
+    </form>
+</div>

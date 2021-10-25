@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "Administration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+       <div class="row">
+        <div class="pull-right">
+            <a href="/Administration/Download/?file=setup.msi">Download agent</a>
+        </div>
+    </div> 
+       <div class="row-fluid">
+           @await Html.PartialAsync("AdministrationMenu.cshtml")
+       </div>
+    <div class="row">
+        @RenderBody()
+    </div>
+</div>

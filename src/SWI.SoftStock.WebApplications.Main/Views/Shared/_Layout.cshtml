@@ -1,0 +1,73 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @if (!string.IsNullOrEmpty(ViewBag.TagTitle))
+    {
+        <title>@ViewBag.TagTitle</title>
+    }
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="SamStarter: proactive online software asset management system"/>
+    <meta name="keywords" content="SAM, Software asset management, SAM, ITIL, IT asset management">
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+
+    <link rel="stylesheet" href="~/app/css/main.css"/>
+    <link rel="stylesheet" href="~/Content/themes/jquery.ui.all.css"/>
+    <link rel="stylesheet" href="~/ui/bootstrap_dropdowns_enhancement/css/dropdowns-enhancement.css"/>
+
+    <script src="~/app/js/jqueryBundle.js"></script>
+    <script src="~/app/js/jqueryValidate.js"></script>
+    <script src="~/app/js/bootstrap.js"></script>
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <environment include="Development">
+        <script src="~/app/js/site.debug.js"></script>
+        <script src="~/app/js/infrastructure.debug.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/app/js/site.js"></script>
+        <script src="~/app/js/infrastructure.js"></script>
+    </environment>
+
+    <script src="~/app/js/knockout.js"></script>
+    <script src="~/app/js/infrastructure.js"></script>
+    <script src="~/app/js/loginlogic.js"></script>
+    <script src="~/ui/bootstrap_dropdowns_enhancement/js/dropdowns-enhancement.js"></script>
+
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="float-left">
+                <p class="site-title">@Html.ActionLink("SamStarter", "Index", "Home", new { area = "" }, null)</p>
+            </div>
+            <div class="float-right">
+                <section id="login">
+                    @await Html.PartialAsync("_LoginPartial")
+                </section>
+                <nav>
+                    @await Html.PartialAsync("_MainMenuPartial")
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div id="body">
+        <div id="ajax-loader">
+            <img src="@Url.Content("~/Images/BusyIndicator.gif")" alt="Loading..." />
+        </div>
+        <section class="container main-content clear-fix">
+            @RenderBody()
+        </section>
+    </div>
+    <footer>
+        <div class="container">
+            <div class="float-left">
+                <p>&copy; @DateTime.Now.Year - SamStarter</p>
+            </div>
+            <div class="float-right">
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

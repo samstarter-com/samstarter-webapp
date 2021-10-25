@@ -1,0 +1,32 @@
+﻿<div id="details">
+     
+    <div class="dropdown" id="observableMenu">
+        <button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+            Actions
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <li role="presentation" data-bind='click: menu().onAppendLinkClick'><a role="menuitem" tabindex="-1" href="/management/observables/append" id="appendLink">Append to machine</a></li>
+                <li role="presentation" data-bind='click: menu().onDeleteLinkClick, enable: menu().onDeleteLinkClickEnabled'><a role="menuitem" tabindex="2" href="/management/observables/delete" id="deleteLink">Delete</a></li>
+        </ul>
+    </div>
+
+    <ul>
+        <li><label for="processName">Process name</label>
+            <span id="processName" data-bind='text: processName'></span>
+        </li>
+        <li><label for="softwareName">Software name</label>
+            <a id="softwareName" data-bind='text: softwareName, attr: { href: softwareUrl, title: softwareName }'></a>
+        </li>
+        <li><label for="publisherName">Software publisher name</label>
+            <span id="publisherName" data-bind='text: publisherName'></span>
+        </li>
+        <li><label for="createdBy">Created by</label>
+            <span id="createdBy" data-bind='text: createdBy'></span>
+        </li>
+        <li><label for="appended">Appended machines</label>
+            <a id="appended" data-bind="text: appendedMachines, attr: { href: appendedUrl, title: appendedMachines }"></a>
+        </li>
+    </ul>
+</div>
+

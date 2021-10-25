@@ -1,0 +1,148 @@
+﻿@using SWI.SoftStock.WebApplications.Main.Models
+<script type="text/html" id="NetworkAdapters">
+    <tr>
+        <td data-bind="text: caption"></td>
+        <td data-bind="text: macAdress"></td>
+    </tr>
+</script>
+
+<script type="text/html" id="ObservableProcesses">
+    <tr>
+        <td data-bind="text: processName"></td>
+        <td><a data-bind='text: softwareName, attr: { href: softwareUrl, title: softwareName }' /></td>
+    </tr>
+</script>
+
+<div id="details">
+
+    <div class="dropdown">
+        <button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+            Actions
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <li role="presentation" data-bind='click: menu().onLinkToStructureUnitClick'>
+                    <a role="menuitem" tabindex="3" href='machines/LinkToStructureUnit' id="linkToStructureUnitLink">Link to structure unit</a>
+                </li>
+                <li role="presentation" data-bind='click: menu().onLinkToUserClick'>
+                    <a role="menuitem" tabindex="4" href='machines/LinkToUser' id="linkToUserLink">Link to user</a>
+                </li>
+                <li role="presentation" data-bind='click: menu().onDeleteClick'>
+                    <a role="menuitem" tabindex="4" href='machines/Delete' id="deleteLink">Delete</a>
+                </li>
+                <li role="presentation" data-bind='click: menu().onDisableClick, enable: menu().onDisableClickEnabled'>
+                    <a role="menuitem" tabindex="4" href='machines/Disable' id="disableLink">Disable</a>
+                </li>
+                <li role="presentation" data-bind='click: menu().onEnableClick, enable: menu().onEnableClickEnabled'>
+                    <a role="menuitem" tabindex="4" href='machines/Enable' id="enableLink">Enable</a>
+                </li>
+        </ul>
+    </div>
+
+    <ul>
+        <li data-bind="visible: enabled()==false">
+            <label for="status">Status</label>
+            <span id="status">disabled</span>
+        </li>
+        <li>
+            <label for="structureUnitName">Structure unit</label>
+            <a id="structureUnitName" data-bind='text: structureUnitName, attr: { href: structureUnitUrl, title: structureUnitName }'></a>
+        </li>
+        <li>
+            <label for="userName">Linked user</label>
+            <a id="userName" data-bind='text: userName, attr: { href: userUrl, title: userName }'></a>
+        </li>
+        <li>
+            <label for="name">Name</label>
+            <span id="name" data-bind='text: name' />
+        </li>
+        <li>
+            <label for="totalSoftwareCount">Total software</label>
+            <a data-bind="text: totalSoftwareCount, attr: { href: 'machine/softwares'+'?id=' + machineId()+'&filterType=@((Int32)(LicenseFilterType.Licensed | LicenseFilterType.Unlicensed))' }"></a>
+        </li>
+        <li>
+            <label for="licensedSoftwareCount">Licensed software</label>
+            <a data-bind="text: licensedSoftwareCount, attr: { href: 'machine/softwares'+'?id=' + machineId()+'&filterType=@((Int32)LicenseFilterType.Licensed)' }"></a></li>
+        <li>
+            <label for="unLicensedSoftwareCount">Unlicensed software</label>
+            <a data-bind="text: unLicensedSoftwareCount, attr: { href: 'machine/softwares'+'?id=' + machineId()+'&filterType=@((Int32)LicenseFilterType.Unlicensed)' }"></a>
+        </li>
+        <li>
+            <label for="memoryTotalCapacity">Memory total capacity</label>
+            <span id="memoryTotalCapacity" data-bind='text: memoryTotalCapacity' />
+        </li>
+        <li>
+            <label for="monitorCount">Monitor count</label>
+            <span id="monitorCount" data-bind='text: monitorCount' />
+        </li>
+        <li>
+            <label for="monitorsSameDisplayFormat">Is monitors same display format</label>
+            <input id="monitorsSameDisplayFormat" type="checkbox" disabled="disabled" data-bind='checked: monitorsSameDisplayFormat'>
+        </li>
+        <li>
+            <label for="mouseButtons">Mouse buttons count</label>
+            <span id="mouseButtons" data-bind='text: mouseButtons' />
+        </li>
+        <li>
+            <label for="screenOrientation">Screen orientation</label>
+            <span id="screenOrientation" data-bind='text: screenOrientation' />
+        </li>
+        <li>
+            <label for="processorCount">Processors count</label>
+            <span id="processorCount" data-bind='text: processorCount' />
+        </li>
+        <li>
+            <label for="domainUserName">Domain user</label>
+            <span id="domainUserName" data-bind='text: domainUserName' />
+        </li>
+        <li>
+            <label for="domainUserDomainName">Domain</label>
+            <span id="domainUserDomainName" data-bind='text: domainUserDomainName' />
+        </li>
+        <li>
+            <label for="createdOn">First appearance</label>
+            <span id="createdOn" data-bind='text: createdOn' />
+        </li>
+        <li>
+            <label for="lastActivity">Last activity</label>
+            <span id="lastActivity" data-bind='text: lastActivity' />
+        </li>
+        <li>
+            @await Html.PartialAsync("ProcessorDetails")
+        </li>
+        <li data-bind='if: operationSystem, visible: operationSystem'>
+            @await Html.PartialAsync("OperationSystemDetails")
+        </li>
+    </ul>
+    <label for="networkAdapters_table">Network adapters</label>
+    <table class="table table-striped table-bordered" id="networkAdapters_table">
+        <thead>
+            <tr>
+                <th>Caption</th>
+                <th>MacAdress</th>
+            </tr>
+        </thead>
+        <tbody data-bind="template: {
+    name: 'NetworkAdapters',
+    foreach: networkAdapters
+}">
+        </tbody>
+    </table>
+    <div data-bind="visible: observableProcesses().length > 0">
+    <label for="observableProcesses_table">Observable processes</label>
+        <table class="table table-striped table-bordered" id="observableProcesses_table" >
+            <thead>
+                <tr>
+                    <th>Process name</th>
+                    <th>Software name</th>
+                </tr>
+            </thead>
+            <tbody data-bind="template: {
+    name: 'ObservableProcesses',
+    foreach: observableProcesses
+}">
+            </tbody>
+        </table>
+        </div>
+</div>
+

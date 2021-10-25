@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Register";
+}
+
+<script src="/app/js/registerlogic.js"></script>
+
+<div id="verifyForm">   
+    <div class="validation-summary-errors">
+        <ul data-bind="foreach: errors">
+            <li>
+                <span data-bind="text: $data"> </span>
+            </li>
+        </ul>
+    </div>
+
+    </div>
+
+<script type="text/javascript">
+            $(function () {
+                $(document).ready(function () {
+
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const userId = urlParams.get('userId') || '';
+                    const code = urlParams.get('code') || '';
+
+                    var account = new AccountRegisterViewModel();
+                    ko.applyBindings(account, document.getElementById('verifyForm'));
+                    account.verify(userId, code);
+                });
+            });
+</script>

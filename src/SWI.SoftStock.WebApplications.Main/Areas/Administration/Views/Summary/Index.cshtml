@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Company";
+    Layout = "../Shared/AdministrationLayout.cshtml";
+}
+
+<script src="~/app/js/summarylogic.js"></script>
+
+<div class="col-md-12" id="summary">
+
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $(document).ready(function () {
+            const detailTemplate = `/${ADMINISTRATION_SUMMARY_PAGE}/Details`;
+            const contentElement = document.getElementById("summary");
+            const defaultDataVmCnstr = () => new SummaryViewModel(listTemplate);
+            const pagevm = new SummaryPageViewModel(defaultDataVmCnstr, contentElement, null);
+            const datavm = new SummaryViewModel(detailTemplate, pagevm.menu);
+            pagevm.setDataVM(datavm);
+            pagevm.reload();
+        });
+    });
+</script>

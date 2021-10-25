@@ -1,0 +1,21 @@
+﻿<hgroup class="title">
+    <h1>Create license</h1>
+</hgroup>
+@await Html.PartialAsync("AddEditWizard")
+
+<div id="add">
+    <form data-bind="submit: addLicense">
+
+        <div class="validation-summary-errors">
+            <ul data-bind="foreach: errors">
+                <li>
+                    <span data-bind="text: $data"> </span>
+                </li>
+            </ul>
+        </div>
+        <fieldset>
+            <div data-bind="template: { name: 'AddUpdateSoftwareForm'}"></div>
+            <input type="submit" id="submitButton" value="Create" data-bind="visible: showSubmitButton" />
+        </fieldset>
+    </form>
+</div>

@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Machine";
+    Layout = "../Shared/PersonalLayout.cshtml";
+}
+
+<script src="/app/js/personalmachinelogic.js"></script>
+
+@await Html.PartialAsync("~/Views/Shared/_PagingPanelTemplate.cshtml")
+
+
+<div class="col-md-12">
+    <div id="personalMachineContent">
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $(document).ready(function () {
+            const listTemplate = '/personal/machines/List';
+            const contentElement = document.getElementById("personalMachineContent");
+            const defaultDataVmCnstr = () => new PersonalMachinesListViewModel(listTemplate);
+            const pagevm = new PersonalMachinesPageViewModel(defaultDataVmCnstr, contentElement, null);
+            const datavm = new PersonalMachinesListViewModel(listTemplate, pagevm.menu);
+            pagevm.setDataVM(datavm);
+            pagevm.reload();
+        });
+    });
+</script>

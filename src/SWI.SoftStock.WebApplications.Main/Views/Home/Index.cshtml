@@ -1,0 +1,16 @@
+@{
+    ViewBag.TagTitle = "SamStarter: software asset management system";
+}
+
+
+<script type="text/javascript">
+    $(function () {
+        $(document).ready(function () {
+            var account = new AccountViewModel();
+            account.startPage = '/Home/Landing';
+            account.checkIsLogged();
+
+        });
+    }
+    );
+</script>

@@ -1,0 +1,15 @@
+﻿<script type="text/html" id="ReportPanel">
+    <div class="col-md-4 nopadding form-group pull-right">
+        <div class="col-md-10 nopadding">
+            <select class="form-control" id="FormatTypeId" data-bind="selectedOptions: chosenFormat" name="FormatTypeId">
+                <option value="0">Select a format</option>
+                <option value="1">CSV</option>
+            </select>
+        </div>
+        <div class="col-md-2 nopadding">
+            <button type="button" class="btn btn-default btn-sm form-control" data-bind='click: onExportClick,css: { disabled: chosenFormat() == 0 }' title="Export">
+                <span class="glyphicon glyphicon-export"></span>
+            </button>
+        </div>
+    </div>
+</script>

@@ -1,0 +1,18 @@
+﻿<ul id="menu">
+    <li style="display: none;" data-bind = 'visible: isAdmin' >@Html.ActionLink("Administration", "Index", "Administration", new { area = "" }, null)</li>
+    <li style="display: none;" data-bind = 'visible: isManager'>@Html.ActionLink("License management", "Index", "Management", new { area = "" }, null)</li>
+    <li style="display: none;" data-bind = 'visible: isUser'>@Html.ActionLink("Personal cabinet", "Index", "Personal", new { area = "" }, null)</li>
+    <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, null)</li>
+    <li>@Html.ActionLink("Docs", "Docs", "Home", new { area = "" }, null)</li>
+</ul>
+
+
+<script type="text/javascript">
+    $(function () {
+        $(document).ready(function () {
+            var menu = new MainMenuViewModel();
+            ko.applyBindings(menu, document.getElementById('menu'));
+            menu.getRoles();
+        });
+    });
+</script>

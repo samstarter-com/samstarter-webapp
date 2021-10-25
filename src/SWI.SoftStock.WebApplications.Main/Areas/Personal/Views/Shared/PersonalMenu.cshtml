@@ -1,0 +1,21 @@
+﻿@model dynamic
+
+<div id="personalMenu">
+    <ul class="nav nav-tabs">     
+            <li class="@(((string)ViewContext.RouteData.Values["Controller"]).ToLower() == "personalmachine"  ? "active" : "")">@Html.ActionLink("Machine", "Index", "PersonalMachine")</li>
+            <li class="@(((string)ViewContext.RouteData.Values["Controller"]).ToLower() == "personalsoftware" ? "active" : "")">@Html.ActionLink("Software", "Index", "PersonalSoftware")</li>
+            <li class="@(((string)ViewContext.RouteData.Values["Controller"]).ToLower() == "personallicenserequest" ? "active" : "")">
+                @Html.ActionLink("License request", "Index", "PersonalLicenseRequest")
+                <span id="header-licenseRequest-count" class="gem " aria-hidden="true" data-bind='text: licenseRequestCount'></span>
+            </li>        
+    </ul>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $(document).ready(function () {
+            var personalPagevm = new PersonalPageViewModel();
+            personalPagevm.getNewLicenseRequestCount();
+            ko.applyBindings(personalPagevm, document.getElementById("personalMenu"));
+        });
+    });
+</script>

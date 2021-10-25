@@ -1,0 +1,46 @@
+﻿<script type="text/html" id="LicenseDetail">
+    <tr data-bind="click: onDetailRowClick, css: { info: isSelected() == true }">
+        <td data-bind="text: name"></td>
+    </tr>
+</script>
+
+@await Html.PartialAsync("~/Views/Shared/_PagingPanelTemplate.cshtml")
+
+<hgroup class="title">
+    <h1>License software installation</h1>
+</hgroup>
+<div id="linkLicense">
+    @using (Html.BeginForm((string)ViewBag.FormAction))
+    {
+        @Html.ValidationSummary(true, "Licensing was unsuccessful. Please correct errors and try again.")
+        <fieldset>
+            <div class="col-md-12" id="licenseContent">
+                <input type="hidden" data-bind="value: machineId" name="machineId" />
+                <input type="hidden" data-bind="value: softwareId" name="softwareId" />
+                <label for="licenseContent">Available licenses</label>
+                <table class="table table-striped table-hover" id="users_table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="template: {
+    name: 'LicenseDetail',
+    foreach: items
+}">
+                    </tbody>
+                </table>
+
+                <div data-bind="template: {
+    name: 'PagingPanel',
+    data: paging
+}"></div>
+                <input type="hidden" data-bind="value: selectedItemId" name="licenseId" />
+            </div>
+            <div class="col-md-12">
+                <input type="submit" value="Link" />
+            </div>
+        </fieldset>
+    }
+</div>
+

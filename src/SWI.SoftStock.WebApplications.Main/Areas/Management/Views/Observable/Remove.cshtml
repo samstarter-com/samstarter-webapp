@@ -1,0 +1,22 @@
+﻿<hgroup class="title">
+    <h1>Remove process observing from machine</h1>
+</hgroup>
+<div id="remove">
+    <form data-bind="submit: removeObservable">
+        <div class="validation-summary-errors">
+            <ul data-bind="foreach: errors">
+                <li>
+                    <span data-bind="text: $data"> </span>
+                </li>
+            </ul>
+        </div>
+        <fieldset>
+            <div style="margin: 15px 0 15px 15px;">
+                <span>Remove process observing from machine and observing history data?</span>
+            </div>
+            <div>
+                <input type="submit" value="Remove" />
+            </div>
+        </fieldset>
+    </form>
+</div>

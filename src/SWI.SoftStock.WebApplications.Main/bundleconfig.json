@@ -1,0 +1,371 @@
+[
+  {
+    "outputFileName": "wwwroot/app/js/jqueryBundle.js",
+    "inputFiles": [
+      "wwwroot/Scripts/jquery-1.11.2.js",
+      "wwwroot/Scripts/jquery-migrate-1.2.1.js",
+      "wwwroot/Scripts/axios.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/app/js/jqueryValidate.js",
+    "inputFiles": [
+      "wwwroot/Scripts/Validation/jquery.unobtrusive-ajax.js",
+      "wwwroot/Scripts/Validation/jquery.validate-vsdoc.js",
+      "wwwroot/Scripts/Validation/jquery.validate.js",
+      "wwwroot/Scripts/Validation/jquery.validate.unobtrusive.js",
+      "wwwroot/Scripts/Validation/validator.methods.js",
+      "wwwroot/Scripts/Validation/unobtrusive.adapters.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/app/js/bootstrap.js",
+    "inputFiles": [
+      "wwwroot/Scripts/bootstrap.js",
+      "wwwroot/Scripts/jquery.validate.unobtrusive.bootstrap.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/app/js/site.debug.js",
+    "inputFiles": [
+      "wwwroot/Scripts/CommonSite.js",
+      "wwwroot/Scripts/variables.debug.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/app/js/site.js",
+    "inputFiles": [
+      "wwwroot/Scripts/CommonSite.js",
+      "wwwroot/Scripts/variables.js",
+      "wwwroot/Scripts/googleAnalytics.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/app/js/knockout.js",
+    "inputFiles": [
+      "wwwroot/Scripts/knockout-3.4.2.js",
+      "wwwroot/Scripts/knockout.mapping-latest.js"
+    ]
+  },
+
+  {
+    "outputFileName": "wwwroot/app/js/infrastructure.js",
+    "inputFiles": [
+      "wwwroot/Scripts/form-master/jquery.form.js",
+      "wwwroot/Scripts/knockout.mapping-latest.js",
+      "wwwroot/Scripts/ViewModels/Infrastructure/BaseViewModel.js",
+      "wwwroot/Scripts/ViewModels/Infrastructure/DetailViewModel.js",
+      "wwwroot/Scripts/ViewModels/Infrastructure/MenuViewModel.js",
+      "wwwroot/Scripts/ViewModels/Infrastructure/PageViewModel.js",
+      "wwwroot/Scripts/ViewModels/Infrastructure/PagingViewModel.js",
+      "wwwroot/Scripts/ViewModels/Infrastructure/ReportingViewModel.js",
+      "wwwroot/Scripts/ViewModels/Infrastructure/TreeFilterViewModel.js",
+      "wwwroot/Scripts/ViewModels/Infrastructure/ListViewModel.js",
+      "wwwroot/Scripts/ViewModels/Infrastructure/PlainFilterViewModel.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/app/js/loginlogic.js",
+    "inputFiles": [
+      //"wwwroot/Scripts/jwt-decode.js",
+      "wwwroot/Scripts/ViewModels/Account/AccountHeaderViewModel.js",
+      "wwwroot/Scripts/ViewModels/Account/AccountViewModel.js",
+      "wwwroot/Scripts/ViewModels/Account/MainMenuViewModel.js"
+    ]
+  },
+
+  {
+    "outputFileName": "wwwroot/app/js/personallogic.js",
+    "inputFiles": [
+      "wwwroot/Scripts/ViewModels/Personal/PersonalPageViewModel.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/app/js/personallicenserequestlogic.js",
+    "inputFiles": [
+      "wwwroot/Scripts/ViewModels/Personal/LicenseRequest/PersonalLicenseRequestMenuViewModel.js",
+      "wwwroot/Scripts/ViewModels/Personal/LicenseRequest/PersonalLicenseRequestPageViewModel.js",
+      "wwwroot/Scripts/ViewModels/Personal/LicenseRequest/PersonalLicenseRequestsListFilterViewModel.js",
+      "wwwroot/Scripts/ViewModels/Personal/LicenseRequest/PersonalLicenseRequestsListViewModel.js",
+      "wwwroot/Scripts/ViewModels/Personal/LicenseRequest/PersonalLicenseRequestViewModel.js",
+      "wwwroot/Scripts/ViewModels/Infrastructure/BaseDocumentViewModel.js",
+      "wwwroot/Scripts/ViewModels/Personal/LicenseRequest/PersonalLicenseRequestDocumentViewModel.js",
+      "wwwroot/Scripts/moment/moment_lang.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/app/js/personalmachinelogic.js",
+    "inputFiles": [
+      "wwwroot/Scripts/ViewModels/Personal/Machine/PersonalMachinesPageViewModel.js",
+      "wwwroot/Scripts/ViewModels/Personal/Machine/PersonalMachinesListViewModel.js",
+      "wwwroot/Scripts/ViewModels/Personal/Machine/PersonalMachineViewModel.js"
+    ]
+  },
+
+  {
+    "outputFileName": "wwwroot/app/js/personalsoftwarelogic.js",
+    "inputFiles": [
+      "wwwroot/Scripts/ViewModels/Personal/Software/PersonalSoftwarePageViewModel.js",
+      "wwwroot/Scripts/ViewModels/Personal/Software/PersonalSoftwaresListViewModel.js",
+      "wwwroot/Scripts/ViewModels/Personal/Software/PersonalSoftwaresListFilterViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/License/BaseLicenseViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/Software/SoftwareViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/Observable/ObservableViewModel.js",
+      "wwwroot/Scripts/ViewModels/Personal/Machine/PersonalMachineViewModel.js",
+      "wwwroot/Scripts/moment/moment_lang.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/app/js/summarylogic.js",
+    "inputFiles": [
+      "wwwroot/Scripts/ViewModels/Administration/Summary/SummaryViewModel.js",
+      "wwwroot/Scripts/ViewModels/Administration/Summary/SummaryPageViewModel.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/app/js/companylogic.js",
+    "inputFiles": [
+      "wwwroot/Scripts/ViewModels/Administration/StructureUnit/StructureUnitMenuViewModel.js",
+      "wwwroot/Scripts/ViewModels/Administration/StructureUnit/StructureUnitPageViewModel.js",
+      "wwwroot/Scripts/ViewModels/Administration/StructureUnit/StructureUnitViewModel.js",
+      "wwwroot/Scripts/ViewModels/Administration/StructureUnit/StructureUnitRoleViewModelReadOnly.js",
+      "wwwroot/Scripts/ViewModels/Administration/StructureUnit/StructureUnitRoleListViewModelReadOnly.js",
+      "wwwroot/Scripts/ViewModels/Administration/StructureUnit/UserRoleMenuViewModel.js",
+      "wwwroot/Scripts/ViewModels/Administration/User/UsersListViewModel.js",
+      "wwwroot/Scripts/ViewModels/Administration/User/UserViewModel.js",
+      "wwwroot/Scripts/ViewModels/Administration/StructureUnit/GrantRoleViewModel.js",
+      "wwwroot/Scripts/moment/moment_lang.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/app/js/userlogic.js",
+    "inputFiles": [
+      "wwwroot/Scripts/ViewModels/Administration/User/UsersListViewModel.js",
+      "wwwroot/Scripts/ViewModels/Administration/User/UserViewModel.js",
+      "wwwroot/Scripts/ViewModels/Administration/User/UserRoleViewModel.js",
+      "wwwroot/Scripts/ViewModels/Administration/User/UserRoleViewModelReadOnly.js",
+      "wwwroot/Scripts/ViewModels/Administration/User/UserMenuViewModel.js",
+      "wwwroot/Scripts/ViewModels/Administration/User/UserPageViewModel.js",
+      "wwwroot/Scripts/moment/moment_lang.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/app/js/managementlogic.js",
+    "inputFiles": [
+      "wwwroot/Scripts/ViewModels/Management/ManagementPageViewModel.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/app/js/machinelogic.js",
+    "inputFiles": [
+      "wwwroot/Scripts/ViewModels/Management/Machine/MachinesListViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/Machine/MachineViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/Machine/MachineMenuViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/Machine/MachinePageViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/Machine/MachinesListFilterViewModel.js",
+      "wwwroot/Scripts/ViewModels/Administration/User/UsersListViewModel.js",
+      "wwwroot/Scripts/ViewModels/Administration/User/UserViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/Observable/ObservableViewModel.js",
+      "wwwroot/Scripts/moment/moment_lang.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/app/js/licenselogic.js",
+    "inputFiles": [
+      "wwwroot/Scripts/ViewModels/Management/License/LicenseMenuViewModel.js",
+      "wwwroot/Scripts/ViewModels/Administration/User/UserViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/License/LicensePageViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/License/AlertViewModel.js",
+      "wwwroot/Scripts/ViewModels/Infrastructure/BaseDocumentViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/License/DocumentViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/License/LicensesListViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/License/BaseLicenseViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/License/LicenseViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/Software/SoftwaresListViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/Software/SoftwareViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/Software/SoftwareViewModel.js",
+      "wwwroot/Scripts/bootstrapwizard/jquery.bootstrap.wizard.js",
+      "wwwroot/Scripts/bootstrapwizard/prettify.js",
+      "wwwroot/Scripts/timeentry/jquery.plugin.js",
+      "wwwroot/Scripts/timeentry/jquery.timeentry.js",
+      "wwwroot/Scripts/moment/moment_lang.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/app/js/licensemachinelogic.js",
+    "inputFiles": [
+      "wwwroot/Scripts/ViewModels/Management/LicenseMachine/LicenseMachinePageViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/LicenseMachine/LicenseMachinesListViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/LicenseMachine/LicenseMachinesListFilterViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/LicenseMachine/LicenseMachinesMenuViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/LicenseMachine/LicenseAllMachinesMenuViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/Machine/MachineViewModel.js",
+      "wwwroot/Scripts/moment/moment_lang.js"
+    ]
+  },
+
+
+  {
+    "outputFileName": "wwwroot/app/js/licenserequestlogic.js",
+    "inputFiles": [
+      "wwwroot/Scripts/ViewModels/Management/LicenseRequest/LicenseRequestPageViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/LicenseRequest/LicenseRequestMenuViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/LicenseRequest/LicenseRequestsListFilterViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/LicenseRequest/LicenseRequestsListViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/LicenseRequest/LicenseRequestViewModel.js",
+      "wwwroot/Scripts/ViewModels/Infrastructure/BaseDocumentViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/LicenseRequest/LicenseRequestDocumentViewModel.js",
+      "wwwroot/Scripts/moment/moment_lang.js"
+    ]
+  },
+
+  {
+    "outputFileName": "wwwroot/app/js/licenseusagelogic.js",
+    "inputFiles": [
+      "wwwroot/Scripts/ViewModels/Management/Usage/UsagePageViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/Usage/UsageViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/Usage/UsageFilterViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/Usage/UsageListViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/Machine/MachineViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/Usage/UsageMachineViewModel.js",
+      "wwwroot/Scripts/moment/moment_lang.js"
+    ]
+  },
+
+  {
+    "outputFileName": "wwwroot/app/js/jqplot.js",
+    "inputFiles": [
+      "wwwroot/ui/jqplot/jquery.jqplot.js",
+      "wwwroot/ui/jqplot/plugins/jqplot.barRenderer.js",
+      "wwwroot/ui/jqplot/plugins/jqplot.barRenderer.js",
+      "wwwroot/ui/jqplot/plugins/jqplot.categoryAxisRenderer.js",
+      "wwwroot/ui/jqplot/plugins/jqplot.pointLabels.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/app/js/machinelicenselogic.js",
+    "inputFiles": [
+      "wwwroot/Scripts/ViewModels/Management/MachineLicense/MachineLicenseMenuViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/LicenseMachine/LicenseMachinesMenuViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/MachineLicense/MachineLicensePageViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/MachineLicense/MachineAllLicenseMenuViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/MachineLicense/MachineLicenseListViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/MachineLicense/MachineLicenseListFilterViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/License/BaseLicenseViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/License/LicenseViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/License/AlertViewModel.js",
+      "wwwroot/Scripts/ViewModels/Infrastructure/BaseDocumentViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/License/DocumentViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/Software/SoftwareViewModel.js",
+      "wwwroot/Scripts/moment/moment_lang.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/app/js/machinesoftwarelogic.js",
+    "inputFiles": [
+      "wwwroot/Scripts/ViewModels/Management/MachineSoftware/MachineSoftwarePageViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/MachineSoftware/MachineSoftwareMenuViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/MachineSoftware/MachineSoftwaresListViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/MachineSoftware/MachineSoftwaresListFilterViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/License/BaseLicenseViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/Software/SoftwareViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/MachineSoftware/ShortLicensesListViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/MachineSoftware/ShortLicenseViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/LicenseRequest/LicenseRequestViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/Observable/ObservableViewModel.js",
+      "wwwroot/Scripts/moment/moment_lang.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/app/js/observablelogic.js",
+    "inputFiles": [
+      "wwwroot/Scripts/ViewModels/Management/Observable/ObservablePageViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/Observable/ObservableMenuViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/Observable/ObservablesListViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/Observable/ObservableViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/Observable/ObservableFilterViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/Machine/MachinesListViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/Machine/MachinesListFilterViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/Machine/MachineMenuViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/Machine/MachineViewModel.js",
+      "wwwroot/Scripts/moment/moment_lang.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/app/js/machineswithobservablelogic.js",
+    "inputFiles": [
+      "wwwroot/Scripts/ViewModels/Management/MachinesWithObservable/MachinesWithObservableListViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/MachinesWithObservable/MachinesWithObservableMenuViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/MachinesWithObservable/MachinesWithObservablePageViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/Machine/MachineViewModel.js",
+      "wwwroot/Scripts/moment/moment_lang.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/app/js/softwarelogic.js",
+    "inputFiles": [
+      "wwwroot/Scripts/ViewModels/Management/Software/SoftwaresListViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/Software/SoftwaresListFilterViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/License/BaseLicenseViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/Software/SoftwareViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/Software/SoftwareMenuViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/Software/SoftwarePageViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/Observable/ObservableViewModel.js",
+      "wwwroot/Scripts/moment/moment_lang.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/app/js/softwaremachinelogic.js",
+    "inputFiles": [
+      "wwwroot/Scripts/ViewModels/Management/SoftwareMachine/SoftwareMachinePageViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/SoftwareMachine/SoftwareMachineMenuViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/SoftwareMachine/SoftwareMachinesListViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/SoftwareMachine/SoftwareMachinesListFilterViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/Machine/MachineViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/MachineSoftware/ShortLicensesListViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/MachineSoftware/ShortLicenseViewModel.js",
+      "wwwroot/Scripts/ViewModels/Management/LicenseRequest/LicenseRequestViewModel.js",
+      "wwwroot/Scripts/moment/moment_lang.js"
+    ]
+  },
+
+  {
+    "outputFileName": "wwwroot/app/js/changepasswordlogic.js",
+    "inputFiles": [
+      "wwwroot/Scripts/ViewModels/Account/ChangePassword/ChangePasswordFormViewModel.js"
+    ]
+  },
+
+  {
+    "outputFileName": "wwwroot/app/js/registerlogic.js",
+    "inputFiles": [
+      "wwwroot/Scripts/ViewModels/Account/Register/AccountRegisterViewModel.js"
+    ]
+  },
+
+  {
+    "outputFileName": "wwwroot/app/js/contactlogic.js",
+    "inputFiles": [
+      "wwwroot/Scripts/ViewModels/Contact/ContactViewModel.js"
+    ]
+  },
+
+  {
+    "outputFileName": "wwwroot/app/css/main.css",
+    "inputFiles": [
+      "wwwroot/Content/bootstrap.css",
+      "wwwroot/Content/bootstrap-theme.css",
+      "wwwroot/Content/body.css",
+      "wwwroot/Content/bootstrap-responsive.css",
+      "wwwroot/Content/bootstrap-mvc-validation.css",
+      "wwwroot/Content/Site.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/app/css/licenselogic.css",
+    "inputFiles": [
+      "wwwroot/Scripts/bootstrapwizard/prettify.css",
+      "wwwroot/Scripts/timeentry/jquery.timeentry.css"
+    ]
+  }
+]

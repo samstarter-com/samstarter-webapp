@@ -1,0 +1,22 @@
+﻿<hgroup class="title">
+    <h1>Disable machine</h1>
+</hgroup>
+<div id="disable">
+    <form data-bind="submit: disableMachine">
+        <div class="validation-summary-errors">
+            <ul data-bind="foreach: errors">
+                <li>
+                    <span data-bind="text: $data"> </span>
+                </li>
+            </ul>
+        </div>
+        <fieldset>
+            <div style="margin: 15px 0 15px 15px;">
+                <span>Disable machine </span><span class="itemname" data-bind='text: name'></span><span>?</span>
+            </div>
+            <div>
+                <input type="submit" value="Disable" />
+            </div>
+        </fieldset>
+    </form>
+</div>

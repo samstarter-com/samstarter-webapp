@@ -1,0 +1,78 @@
+﻿<script type="text/html" id="LicenseDetail">
+    <tr data-bind="click: onDetailRowClick, css: { info: isSelected() == true }">
+
+        <td>
+            <div class="dropdown">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                    <li role="presentation"><a role="menuitem" tabindex="2" data-bind="attr: { href: url() }" id="detailsLink">Details</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="2" data-bind="attr: { href: usageUrl() }" id="usageLink">License usage</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="2" data-bind="attr: { href: machineUrl() }" id="machineLink">Machines with licensed software</a></li>
+                    <li role="presentation" class="divider"></li>
+                    <li role="presentation" data-bind='click: menu().onUpdateLinkClick, enable: menu().onUpdateLinkClickEnabled'>
+                        <a role="menuitem" tabindex="2" href="/management/licenses/Update" id="updateLink">Edit</a>
+                    </li>
+                    <li role="presentation" data-bind='click: menu().onLinkToStructureUnitClick, enable: menu().onLinkToStructureUnitClickEnabled'><a role="menuitem" tabindex="2" href='@Url.Action("LinkToStructureUnit", "License", new { Area = "Management" })' id="linktoStructureUnitLink">Link to structure unit</a></li>
+                    <li role="presentation" data-bind='click: menu().onDeleteLinkClick, enable: menu().onDeleteLinkClickEnabled'><a role="menuitem" tabindex="2" href="/management/licenses/Delete" id="deleteLink">Delete</a></li>
+                </ul>
+            </div>
+        </td>
+
+        <td data-bind="text: name"></td>
+        <td data-bind="text: licenseTypeName"></td>
+        <td data-bind="text: count"></td>
+        <td data-bind="text: availableCount"></td>
+        <td data-bind="text: structureUnitName"></td>
+        <td data-bind="text: beginDateFormatted"></td>
+        <td data-bind="text: expirationDateFormatted"></td>
+    </tr>
+</script>
+
+@await Html.PartialAsync("~/Views/Shared/_PagingPanelTemplate.cshtml")
+@await Html.PartialAsync("~/Views/Shared/_ReportPanelTemplate.cshtml")
+
+<div id="licenseList">
+
+    <div class="dropdown" id="licenseMenu">
+        <button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+            Actions
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+            <li role="presentation" data-bind='click: onAddLinkClick, enable: onAddLinkClickEnabled'>
+                <a role="menuitem" tabindex="-1" href="/management/licenses/Add" id="addLink">Create</a>
+            </li>
+        </ul>
+    </div>
+    <div id="list">
+        <div data-bind="template: {name: 'ReportPanel',data: reporting}"></div>
+        <table class="table table-striped table-hover" id="softwares_table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th id="thName">Name</th>
+                    <th id="thLicenseType">License type</th>
+                    <th id="thLicenseCount">License count</th>
+                    <th id="thAvailableLicenseCount">Available license count</th>
+                    <th id="thStructureUnit">Structure unit</th>
+                    <th id="thStartDate">Start date</th>
+                    <th id="thExpirationDate">Expiration date</th>
+                </tr>
+            </thead>
+            <tbody data-bind="template: {
+    name: 'LicenseDetail',
+        foreach: items
+    }">
+            </tbody>
+        </table>
+
+        <div data-bind="template: {
+        name: 'PagingPanel',
+        data: paging
+    }">
+        </div>
+    </div>
+</div>

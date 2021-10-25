@@ -1,0 +1,67 @@
+@model SWI.SoftStock.WebApplications.Main.Models.RegisterModel
+
+@{
+    ViewBag.Title = "Register";
+}
+
+<script src="/app/js/registerlogic.js"></script>
+
+<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+    <h2>Use the form below to create a new company.</h2>
+</hgroup>
+
+
+<div id="registerForm">
+    <form data-bind="submit: register">
+
+        <div class="validation-summary-errors">           
+            <ul data-bind="foreach: errors">
+                <li>
+                    <span data-bind="text: $data"> </span>                  
+                </li>
+            </ul>
+        </div>      
+
+        <fieldset>
+            <legend>Registration Form</legend>
+            <ol>
+                <li>
+                    @Html.LabelFor(m => m.CompanyName)
+                    @Html.TextBoxFor(m => m.CompanyName, new { data_bind = "value: companyName" })
+                    @Html.ValidationMessageFor(m => m.CompanyName)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.UserName)
+                    @Html.TextBoxFor(m => m.UserName, new { data_bind = "value: userName" })
+                    @Html.ValidationMessageFor(m => m.UserName)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.Email)
+                    @Html.TextBoxFor(m => m.Email, new { @type = "email", @placeholder = "me@company.com", data_bind = "value: registerEmail" })
+                    @Html.ValidationMessageFor(m => m.Email)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.Password)
+                    @Html.PasswordFor(m => m.Password, new { data_bind = "value: registerPassword" })
+                    @Html.ValidationMessageFor(m => m.Password)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.ConfirmPassword)
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { data_bind = "value: registerPassword2" })
+                    @Html.ValidationMessageFor(m => m.ConfirmPassword)
+                </li>
+            </ol>          
+            <input type="submit" value="Register" />
+        </fieldset>
+    </form>
+</div>
+
+<script type="text/javascript">
+            $(function () {
+                $(document).ready(function () {                  
+                    var account = new AccountRegisterViewModel();                  
+                    ko.applyBindings(account, document.getElementById('registerForm'));
+                });
+            });
+</script>

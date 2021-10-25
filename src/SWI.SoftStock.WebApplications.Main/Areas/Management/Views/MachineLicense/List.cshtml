@@ -1,0 +1,103 @@
+﻿<script type="text/html" id="LicenseDetail">
+    <tr data-bind="click: onDetailRowClick, css: { info: isSelected() == true }">
+        <td>
+            <div class="dropdown">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                    <li role="presentation" data-bind='click: menu().onLicenseSoftwareOnMachineLinkClick, enable: menu().onLicenseSoftwareOnMachineLinkClickEnabled'><a role="menuitem" tabindex="2" href="@Url.Action("LicenseMachine", "Licensing", new { Area = "Management" })" id="licenseSoftwareOnMachineLink">License software on machine</a></li>
+                    <li role="presentation" data-bind='click: menu().onLicenseSoftwareOnMachineUnLinkClick, enable: menu().onLicenseSoftwareOnMachineUnLinkClickEnabled'><a role="menuitem" tabindex="2" href="@Url.Action("UnLicenseMachine", "Licensing", new { Area = "Management" })" id="licenseSoftwareOnMachineUnLink">Remove license from machine</a></li>
+                </ul>
+            </div>
+        </td>
+        <td data-bind="text: name"></td>
+        <td data-bind="text: licenseTypeName"></td>
+        <td data-bind="text: count"></td>
+        <td data-bind="text: availableCount"></td>
+        <td data-bind="text: structureUnitName"></td>
+        <td data-bind="text: beginDate"></td>
+        <td data-bind="text: expirationDate"></td>
+        <td data-bind="text: status"></td>
+    </tr>
+</script>
+
+<script type="text/html" id="MachineDetail">
+
+</script>
+
+@await Html.PartialAsync("~/Views/Shared/_PagingPanelTemplate.cshtml")
+
+<div id="licenseList">
+
+    <div class="dropdown" id="licenseMachineByAllLicensesMenu">
+        <button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+            Actions
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+            <li role="presentation" data-bind='click: onLicenseSoftwareOnMachineByAllLicensesLinkClick'><a role="menuitem" tabindex="-1" href='@Url.Action("LicenseLicenses", "Licensing", new { Area = "Management" })' id="onLicenseSoftwareOnMachineByAllLicensesLink">License software on machine by all licenses</a></li>
+            <li role="presentation" data-bind='click: onLicenseSoftwareOnMachineByAllLicensesUnLinkClick'><a role="menuitem" tabindex="-1" href='@Url.Action("UnLicenseLicenses", "Licensing", new { Area = "Management" })' id="licenseSoftwareOnAllMachineUnLink">Remove all licenses from machine</a></li>
+        </ul>
+    </div>
+
+    <div id="list">
+        <h4 style="display:inline;">Available license for machine: </h4><a data-bind="attr: { href: machineUrl() }"><h4 style="display:inline;" data-bind="text: machineName"></h4></a>
+
+        <table class="table table-striped table-hover" id="softwares_table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th id="thName">Name</th>
+                    <th id="thLicenseType">License type</th>
+                    <th id="thLicenseCount">License count</th>
+                    <th id="thAvailableLicenseCount">Available license count</th>
+                    <th id="thStructureUnit">Structure unit</th>
+                    <th id="thStartDate">Start date</th>
+                    <th id="thExpirationDate">Expiration date</th>
+                    <th id="thStatus">Status</th>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <div class="input-group">
+                            <div id="btn-group">
+                                <button data-toggle="dropdown" class="btn dropdown-toggle" data-placeholder="Please select">Checked option <span class="caret"></span></button>
+                                <ul class="dropdown-menu">
+                                    @foreach (var status in ViewBag.Statuses)
+                                    {
+                                        <li>
+                                            <input type="checkbox" @($"id=statusFilter_{(int) status.Key}") @($"data-bind=checked:tableFilter.status_{(int) status.Key}")>
+                                            <label @($"for=statusFilter_{(int) status.Key}")>@status.Value</label>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button" id="applyFilter" data-bind='click: tableFilter.onApplyClick'><span class="glyphicon glyphicon-filter"></span></button>
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+            </thead>
+            <tbody data-bind="template: {
+    name: 'LicenseDetail',
+        foreach: items
+    }"></tbody>
+        </table>
+
+        <div data-bind="template: {
+        name: 'PagingPanel',
+        data: paging
+    }">
+        </div>
+    </div>
+</div>

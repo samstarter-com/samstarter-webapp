@@ -1,0 +1,16 @@
+﻿<hgroup class="title">
+    <h1>Archive license request</h1>
+</hgroup>
+<div id="archive">
+    <form data-bind="submit: archivelicenseRequest">
+        @Html.ValidationSummary()
+        <fieldset>
+            <div style="margin: 15px 0 15px 15px;">
+                <span>Archive license request?</span>
+            </div>
+            <div>
+                <input type="submit" value="Archive" />
+            </div>
+        </fieldset>
+    </form>
+</div>

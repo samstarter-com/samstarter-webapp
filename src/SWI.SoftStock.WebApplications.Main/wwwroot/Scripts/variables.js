@@ -1,0 +1,1 @@
+﻿var BASE_API_ADDRESS = 'https://samstarter.com/api/';

@@ -1,0 +1,64 @@
+﻿<script type="text/html" id="MachineDetail">
+    <tr data-bind="click: onDetailRowClick, css: {info: isSelected()==true}">
+
+        <td data-bind="text: name"></td>
+        <td data-bind="text: domainUserName"></td>
+        <td data-bind="text: domainUserDomainName"></td>
+        <td data-bind="text: linkedUserName"></td>
+        <td data-bind="text: structureUnitName"></td>
+        <td>
+            <div data-bind="if: licenseUsed">
+                <span class="glyphicon glyphicon-ok"></span>
+            </div>
+            <div data-bind="ifnot: licenseUsed">
+                <span class="glyphicon glyphicon-remove"></span>
+            </div>
+        </td>
+        <td data-bind="text: from"></td>
+        <td data-bind="text: to"></td>
+    </tr>
+</script>
+
+@await Html.PartialAsync("~/Views/Shared/_PagingPanelTemplate.cshtml")
+<h4 style="display:inline;">Usage of license: </h4><a data-bind="attr: { href: licenseUrl() }"><h4 style="display:inline;" data-bind="text: licenseName"></h4></a>
+
+<div class="col-md-12">
+    <div id="machineList">
+        <div id="list">
+            <table class="table table-striped table-hover" id="machines_table">
+                <thead>
+                    <tr>
+                        <th id="thName">Name</th>
+                        <th id="thDomainUserName">Current domain user</th>
+                        <th id="thDomainUserDomainName">Current domain</th>
+                        <th id="thLinkedUserName">Linked user</th>
+                        <th id="thStructureUnitName">Structure unit</th>
+                        <th id="thLicenseUsed">Is license used</th>
+                        <th id="thFrom">From</th>
+                        <th id="thTo">To</th>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody data-bind="template: {
+    name: 'MachineDetail',
+    foreach: items
+}">
+                </tbody>
+            </table>
+
+            <div data-bind="template: {
+    name: 'PagingPanel',
+    data: paging
+}"></div>
+        </div>
+    </div>
+</div>

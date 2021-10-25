@@ -1,0 +1,36 @@
+﻿@using SWI.SoftStock.WebApplications.Main.Models
+
+<script type="text/html" id="MachineDetail">
+    <tr>
+        <td data-bind="text: name"></td>
+        <td><a data-bind="text: totalSoftwareCount, attr: { href: '@Url.Action("Index", "PersonalSoftware")'+'?machineid=' + machineId()+'&filterType=@((Int32)(LicenseFilterType.Licensed | LicenseFilterType.Unlicensed | LicenseFilterType.ExpiredLicensed))' }" /></td>
+        <td><a data-bind="text: licensedSoftwareCount, attr: { href: '@Url.Action("Index", "PersonalSoftware")'+'?machineid=' + machineId()+'&filterType=@((Int32)LicenseFilterType.Licensed)' }" /></td>
+        <td><a data-bind="text: expiredLicensedSoftwareCount, attr: { href: '@Url.Action("Index", "PersonalSoftware")'+'?machineid=' + machineId()+'&filterType=@((Int32)LicenseFilterType.ExpiredLicensed)' }" /></td>
+        <td><a data-bind="text: unLicensedSoftwareCount, attr: { href: '@Url.Action("Index", "PersonalSoftware")'+'?machineid=' + machineId()+'&filterType=@((Int32)LicenseFilterType.Unlicensed)' }" /></td>
+    </tr>
+</script>
+
+<div id="personalMachineList">
+    <div id="list">
+        <table class="table table-striped table-hover" id="machines_table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th id="thTotalSoftwareCount">Total software</th>
+                    <th id="thLicensedSoftwareCount">Licensed software</th>
+                    <th id="thExpiredLicensedSoftwareCount">Expired licensed software</th>
+                    <th id="thUnLicensedSoftwareCount">Unlicensed software</th>
+                </tr>
+            </thead>
+
+            <tbody data-bind="template: {
+    name: 'MachineDetail',
+        foreach: items
+    }"></tbody>
+        </table>
+        <div data-bind="template: {
+        name: 'PagingPanel',
+        data: paging
+    }"></div>
+    </div>
+</div>

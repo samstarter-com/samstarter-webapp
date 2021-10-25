@@ -1,0 +1,18 @@
+﻿<label for="processor">Processor</label> 
+<ul  id="processor" >
+    <li><label for="pProcessorId">ProcessorId</label>
+        <span type="text" id="pProcessorId" data-bind='text: processor.processorId()' readonly="readonly" />
+    </li>
+    <li><label for="pDeviceId">DeviceId</label>
+        <span type="text" id="pDeviceId" data-bind='text: processor.deviceId()' readonly="readonly" />
+    </li>
+    <li><label for="pSocketDesignation">Socket designation</label>
+        <span type="text" id="pSocketDesignation" data-bind='text: processor.socketDesignation()' readonly="readonly" />
+    </li>
+    <li><label for="pIs64BitProcess">Is 64 bit process</label>
+        <input id="pIs64BitProcess" type="checkbox" disabled="disabled" data-bind='checked: processor.is64BitProcess()'>
+    </li>
+    <li><label for="pManufacturer">Manufacturer</label>
+        <span type="text" id="pManufacturer" data-bind='text: processor.manufacturerName()' readonly="readonly" />
+    </li>
+</ul>

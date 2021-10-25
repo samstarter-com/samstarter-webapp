@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Personal cabinet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/app/js/personallogic.js"></script>
+
+<div class="container-fluid">
+        <div  class="row-fluid">
+            @await Html.PartialAsync("PersonalMenu.cshtml")
+        </div>
+        <div class="row">
+            @RenderBody()
+        </div>
+</div>

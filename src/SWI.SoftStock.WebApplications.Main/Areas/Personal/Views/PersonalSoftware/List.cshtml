@@ -1,0 +1,76 @@
+﻿<script type="text/html" id="SoftwareDetail">
+    <tr data-bind="click: onDetailRowClick, css: { info: isSelected() == true }">
+        <td data-bind="text: name"></td>
+        <td data-bind="text: publisherName"></td>
+        <td data-bind="text: version"></td>
+        <td data-bind="text: systemComponent"></td>
+        <td data-bind="text: windowsInstaller"></td>
+        <td data-bind="text: releaseType"></td>
+        <td data-bind="text: installDate"></td>
+        <td>
+            <div data-bind="if: hasLicense()=='1'">
+                <span class="glyphicon glyphicon-ok"></span>
+            </div>
+        </td>
+    </tr>
+</script>
+
+<div id="softwareList">
+    <div id="list">
+        <table class="table table-striped table-hover" id="softwares_table">
+            <thead>
+                <tr>
+                    <th id="thName" class="sortable" data-bind="click: onTableHeaderClick">Name</th>
+                    <th id="thPublisherName" class="sortable" data-bind="click: onTableHeaderClick">Publisher</th>
+                    <th id="thVersion" class="sortable" data-bind="click: onTableHeaderClick">Version</th>
+                    <th id="thSystemComponent" class="sortable" data-bind="click: onTableHeaderClick">System component</th>
+                    <th id="thWindowsInstaller" class="sortable" data-bind="click: onTableHeaderClick">Windows installer</th>
+                    <th id="thReleaseType" class="sortable" data-bind="click: onTableHeaderClick">Release type</th>
+                    <th id="thInstallDate" class="sortable" data-bind="click: onTableHeaderClick">Installed date</th>
+                    <th id="thHasLicense" class="sortable" data-bind="click: onTableHeaderClick">Licensed</th>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <div class="input-group">
+                            <div id="btn-group">
+                                <button data-toggle="dropdown" class="btn dropdown-toggle" data-placeholder="Please select">Checked option <span class="caret"></span></button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <input type="checkbox" id="isHasLicense" data-bind='checked: tableFilter.isHasLicense'>
+                                        <label for="isHasLicense">Licensed</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="hasExpiredLicense" data-bind='checked: tableFilter.hasExpiredLicense'>
+                                        <label for="hasExpiredLicense">Expired license</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="isNotHasLicense" data-bind='checked: tableFilter.isNotHasLicense'>
+                                        <label for="isNotHasLicense">Unlicensed</label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button" id="applyFilter" data-bind='click: tableFilter.onApplyClick'><span class="glyphicon glyphicon-filter"></span></button>
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+            </thead>
+            <tbody data-bind="template: {
+    name: 'SoftwareDetail',
+        foreach: items
+    }"></tbody>
+        </table>
+        <div data-bind="template: {
+        name: 'PagingPanel',
+        data: paging
+    }"></div>
+    </div>
+</div>

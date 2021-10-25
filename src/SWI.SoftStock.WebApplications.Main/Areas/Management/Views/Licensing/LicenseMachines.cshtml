@@ -1,0 +1,23 @@
+﻿<hgroup class="title">
+    <h1>License software on all machines</h1>
+</hgroup>
+<div id="licenseSoftwareOnAllMachine">
+    <form data-bind="submit: licenseMachines">
+    <div class="validation-summary-errors">
+        <ul data-bind="foreach: errors">
+            <li>
+                <span data-bind="text: $data"> </span>
+            </li>
+        </ul>
+    </div>
+        <fieldset>
+            <input id="licenseId" name="licenseId" type="hidden" data-bind='value: licenseId'>
+            <div style="margin: 15px 0 15px 15px;">
+                <span>License software on all machines </span><span> by license </span><span class="itemname" id='licenseName' data-bind='text: licenseName'></span><span>?</span>
+            </div>
+            <div>
+                <input type="submit" value="License" />
+            </div>
+        </fieldset>
+    </form>
+</div>

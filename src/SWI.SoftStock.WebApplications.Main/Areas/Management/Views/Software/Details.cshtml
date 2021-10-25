@@ -1,0 +1,90 @@
+﻿@using SWI.SoftStock.WebApplications.Main.Models
+
+<script type="text/html" id="ObservableProcesses">
+    <tr>
+        <td><a data-bind='text: processName, attr: { href: url, title: processName }'/></td>
+    </tr>
+</script>
+
+<script type="text/html" id="Licenses">
+    <tr>
+        <td><a data-bind='text: name, attr: { href: url, title: name }' /></td>
+    </tr>
+</script>
+
+<div id="softwareDetails">
+    <div class="dropdown">
+    </div>
+
+    <div id="details">
+        <ul>
+            <li><label for="name">Name</label>
+                <span id="name" data-bind='text: name'/>
+            </li>
+
+            <li><label for="publisherName">Publisher</label>
+                <span id="publisherName" data-bind='text: publisherName'/>
+            </li>
+            <li><label for="version">Version</label>
+                <span id="version" data-bind='text: version'/>
+            </li>
+
+            <li><label for="systemComponent">System component</label>
+                <span id="systemComponent" data-bind='text: systemComponent'/>
+            </li>
+
+            <li><label for="windowsInstaller">Windows installer</label>
+                <span id="windowsInstaller" data-bind='text: windowsInstaller'/>
+            </li>
+
+            <li><label for="releaseType">Release type</label>
+                <span id="releaseType" data-bind='text: releaseType'/>
+            </li>
+            <li><label for="totalInstallationCount">Total installations</label>
+                <a id="totalInstallationCount" data-bind="text: totalInstallationCount, attr: { href: '/management/software/machines'+'?id=' + softwareId()+'&filterType=@((Int32)(LicenseFilterType.Licensed | LicenseFilterType.Unlicensed))'}"></a>
+            </li>
+            <li><label for="licensedInstallationCount">Licensed installations</label>
+                <a id="licensedInstallationCount" data-bind="text: licensedInstallationCount, attr: { href: '/management/software/machines'+'?id=' + softwareId()+'&filterType=@((Int32)LicenseFilterType.Licensed)'}"></a>
+            </li>
+            <li><label for="unLicensedInstallationCount">Unlicensed installations</label>
+                <a id="unLicensedInstallationCount" data-bind="text: unLicensedInstallationCount, attr: { href: '/management/software/machines'+'?id=' + softwareId()+'&filterType=@((Int32)LicenseFilterType.Unlicensed)'}"></a>
+            </li>
+
+        </ul>
+
+        <div data-bind="visible: observableProcesses().length > 0">
+            <label for="observableProcesses_table">Observable processes</label>
+            <table class="table table-striped table-bordered" id="observableProcesses_table" >
+                <thead>
+                <tr>
+                    <th>Process name</th>
+                </tr>
+                </thead>
+                <tbody data-bind="template: {
+    name: 'ObservableProcesses',
+    foreach: observableProcesses
+}">
+                </tbody>
+            </table>
+        </div>
+        
+        <div data-bind="visible: licenses().length > 0">
+            <label for="licenses_table">Licenses</label>
+            <table class="table table-striped table-bordered" id="licenses_table" >
+                <thead>
+                <tr>
+                    <th>License name</th>
+                </tr>
+                </thead>
+                <tbody data-bind="template: {
+    name: 'Licenses',
+    foreach: licenses
+}">
+                </tbody>
+            </table>
+        </div>
+        
+
+    </div>
+</div>
+

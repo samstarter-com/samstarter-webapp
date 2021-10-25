@@ -1,0 +1,10 @@
+﻿<script type="text/html" id="FilterItemDetail">
+    <div class="radio">
+        <label>
+            <input type="radio" name="filtergroup" data-bind='id:machineId, value: machineId, checked: $root.selectedValue' />
+            <span data-bind='text: name'></span>
+        </label>
+    </div>
+</script>
+
+<div id="mPlain" data-bind="template: {name: 'FilterItemDetail',  foreach: data}"></div>
