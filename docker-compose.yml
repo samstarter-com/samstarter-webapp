@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  swi.softstock.webapplications.main:
+    image: ${DOCKER_REGISTRY-}swisoftstockwebapplicationsmain
+    build:
+      context: .
+      dockerfile: src/SWI.SoftStock.WebApplications.Main/Dockerfile
