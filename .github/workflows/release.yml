@@ -48,7 +48,7 @@ jobs:
       with:
         context: .
         push: true
-        file: ${{ github.workspace }}/Dockerfile
+        file: ${{ github.workspace }}/src/SWI.SoftStock.WebApplications.Main/Dockerfile
         tags: ${{ steps.variables.outputs.image-name }}
     - name: Tag commit
       run: |
