@@ -90,7 +90,7 @@
       "wwwroot/Scripts/ViewModels/Personal/LicenseRequest/PersonalLicenseRequestViewModel.js",
       "wwwroot/Scripts/ViewModels/Infrastructure/BaseDocumentViewModel.js",
       "wwwroot/Scripts/ViewModels/Personal/LicenseRequest/PersonalLicenseRequestDocumentViewModel.js",
-      "wwwroot/Scripts/moment/moment_lang.js"
+      "wwwroot/Scripts/moment/moment.js"
     ]
   },
   {
@@ -112,7 +112,7 @@
       "wwwroot/Scripts/ViewModels/Management/Software/SoftwareViewModel.js",
       "wwwroot/Scripts/ViewModels/Management/Observable/ObservableViewModel.js",
       "wwwroot/Scripts/ViewModels/Personal/Machine/PersonalMachineViewModel.js",
-      "wwwroot/Scripts/moment/moment_lang.js"
+      "wwwroot/Scripts/moment/moment.js"
     ]
   },
   {
@@ -134,7 +134,7 @@
       "wwwroot/Scripts/ViewModels/Administration/User/UsersListViewModel.js",
       "wwwroot/Scripts/ViewModels/Administration/User/UserViewModel.js",
       "wwwroot/Scripts/ViewModels/Administration/StructureUnit/GrantRoleViewModel.js",
-      "wwwroot/Scripts/moment/moment_lang.js"
+      "wwwroot/Scripts/moment/moment.js"
     ]
   },
   {
@@ -146,7 +146,7 @@
       "wwwroot/Scripts/ViewModels/Administration/User/UserRoleViewModelReadOnly.js",
       "wwwroot/Scripts/ViewModels/Administration/User/UserMenuViewModel.js",
       "wwwroot/Scripts/ViewModels/Administration/User/UserPageViewModel.js",
-      "wwwroot/Scripts/moment/moment_lang.js"
+      "wwwroot/Scripts/moment/moment.js"
     ]
   },
   {
@@ -166,7 +166,7 @@
       "wwwroot/Scripts/ViewModels/Administration/User/UsersListViewModel.js",
       "wwwroot/Scripts/ViewModels/Administration/User/UserViewModel.js",
       "wwwroot/Scripts/ViewModels/Management/Observable/ObservableViewModel.js",
-      "wwwroot/Scripts/moment/moment_lang.js"
+      "wwwroot/Scripts/moment/moment.js"
     ]
   },
   {
@@ -188,7 +188,7 @@
       "wwwroot/Scripts/bootstrapwizard/prettify.js",
       "wwwroot/Scripts/timeentry/jquery.plugin.js",
       "wwwroot/Scripts/timeentry/jquery.timeentry.js",
-      "wwwroot/Scripts/moment/moment_lang.js"
+      "wwwroot/Scripts/moment/moment.js"
     ]
   },
   {
@@ -200,7 +200,7 @@
       "wwwroot/Scripts/ViewModels/Management/LicenseMachine/LicenseMachinesMenuViewModel.js",
       "wwwroot/Scripts/ViewModels/Management/LicenseMachine/LicenseAllMachinesMenuViewModel.js",
       "wwwroot/Scripts/ViewModels/Management/Machine/MachineViewModel.js",
-      "wwwroot/Scripts/moment/moment_lang.js"
+      "wwwroot/Scripts/moment/moment.js"
     ]
   },
 
@@ -215,7 +215,7 @@
       "wwwroot/Scripts/ViewModels/Management/LicenseRequest/LicenseRequestViewModel.js",
       "wwwroot/Scripts/ViewModels/Infrastructure/BaseDocumentViewModel.js",
       "wwwroot/Scripts/ViewModels/Management/LicenseRequest/LicenseRequestDocumentViewModel.js",
-      "wwwroot/Scripts/moment/moment_lang.js"
+      "wwwroot/Scripts/moment/moment.js"
     ]
   },
 
@@ -228,7 +228,7 @@
       "wwwroot/Scripts/ViewModels/Management/Usage/UsageListViewModel.js",
       "wwwroot/Scripts/ViewModels/Management/Machine/MachineViewModel.js",
       "wwwroot/Scripts/ViewModels/Management/Usage/UsageMachineViewModel.js",
-      "wwwroot/Scripts/moment/moment_lang.js"
+      "wwwroot/Scripts/moment/moment.js"
     ]
   },
 
@@ -257,7 +257,7 @@
       "wwwroot/Scripts/ViewModels/Infrastructure/BaseDocumentViewModel.js",
       "wwwroot/Scripts/ViewModels/Management/License/DocumentViewModel.js",
       "wwwroot/Scripts/ViewModels/Management/Software/SoftwareViewModel.js",
-      "wwwroot/Scripts/moment/moment_lang.js"
+      "wwwroot/Scripts/moment/moment.js"
     ]
   },
   {
@@ -273,7 +273,7 @@
       "wwwroot/Scripts/ViewModels/Management/MachineSoftware/ShortLicenseViewModel.js",
       "wwwroot/Scripts/ViewModels/Management/LicenseRequest/LicenseRequestViewModel.js",
       "wwwroot/Scripts/ViewModels/Management/Observable/ObservableViewModel.js",
-      "wwwroot/Scripts/moment/moment_lang.js"
+      "wwwroot/Scripts/moment/moment.js"
     ]
   },
   {
@@ -288,7 +288,7 @@
       "wwwroot/Scripts/ViewModels/Management/Machine/MachinesListFilterViewModel.js",
       "wwwroot/Scripts/ViewModels/Management/Machine/MachineMenuViewModel.js",
       "wwwroot/Scripts/ViewModels/Management/Machine/MachineViewModel.js",
-      "wwwroot/Scripts/moment/moment_lang.js"
+      "wwwroot/Scripts/moment/moment.js"
     ]
   },
   {
@@ -298,7 +298,7 @@
       "wwwroot/Scripts/ViewModels/Management/MachinesWithObservable/MachinesWithObservableMenuViewModel.js",
       "wwwroot/Scripts/ViewModels/Management/MachinesWithObservable/MachinesWithObservablePageViewModel.js",
       "wwwroot/Scripts/ViewModels/Management/Machine/MachineViewModel.js",
-      "wwwroot/Scripts/moment/moment_lang.js"
+      "wwwroot/Scripts/moment/moment.js"
     ]
   },
   {
@@ -311,7 +311,7 @@
       "wwwroot/Scripts/ViewModels/Management/Software/SoftwareMenuViewModel.js",
       "wwwroot/Scripts/ViewModels/Management/Software/SoftwarePageViewModel.js",
       "wwwroot/Scripts/ViewModels/Management/Observable/ObservableViewModel.js",
-      "wwwroot/Scripts/moment/moment_lang.js"
+      "wwwroot/Scripts/moment/moment.js"
     ]
   },
   {
@@ -325,7 +325,7 @@
       "wwwroot/Scripts/ViewModels/Management/MachineSoftware/ShortLicensesListViewModel.js",
       "wwwroot/Scripts/ViewModels/Management/MachineSoftware/ShortLicenseViewModel.js",
       "wwwroot/Scripts/ViewModels/Management/LicenseRequest/LicenseRequestViewModel.js",
-      "wwwroot/Scripts/moment/moment_lang.js"
+      "wwwroot/Scripts/moment/moment.js"
     ]
   },
 
