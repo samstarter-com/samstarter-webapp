@@ -14,7 +14,7 @@ WORKDIR "/src/src/SWI.SoftStock.WebApplications.Main"
 RUN dotnet build "SWI.SoftStock.WebApplications.Main.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "SWI.SoftStock.WebApplications.Main.csproj" -c Release -o /app/publish
+RUN dotnet publish "SWI.SoftStock.WebApplications.Main.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
